@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AffiliatePro - Revolutionary Affiliate Marketing Platform">
+    <meta name="keywords" content="affiliate marketing, product detection, AI, funnel builder">
+    <meta name="author" content="AffiliatePro">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+    <link rel="stylesheet" href="./assets/css/themes.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="./assets/images/icons/favicon.svg">
+    <link rel="icon" type="image/png" href="./assets/images/icons/favicon.png">
+    
+    <title>AffiliatePro - AI-Powered Affiliate Marketing Platform</title>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p class="loading-text" data-i18n="loading">Loading AffiliatePro...</p>
+        </div>
+    </div>
+
+    <!-- Auth Screens -->
+    <div id="auth-container" class="auth-container hidden">
+        <!-- Login Form -->
+        <div id="login-screen" class="auth-screen active">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="logo">
+                        <img src="./assets/images/logos/logo.svg" alt="AffiliatePro" class="logo-img">
+                        <h1>AffiliatePro</h1>
+                    </div>
+                    <p class="auth-subtitle" data-i18n="login.subtitle">
+                        Welcome back! Sign in to your account
+                    </p>
+                </div>
+                
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="email" data-i18n="login.email">Email</label>
+                        <input type="email" id="email" name="email" required 
+                               placeholder="Enter your email" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" data-i18n="login.password">Password</label>
+                        <input type="password" id="password" name="password" required 
+                               placeholder="Enter your password" class="form-input">
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="remember" name="remember">
+                            <span class="checkmark"></span>
+                            <span data-i18n="login.remember">Remember me</span>
+                        </label>
+                        <a href="#" id="forgot-password" class="link" data-i18n="login.forgot">
+                            Forgot password?
+                        </a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full" data-i18n="login.signin">
+                        Sign In
+                    </button>
+                    
+                    <div class="auth-footer">
+                        <p data-i18n="login.no_account">Don't have an account?</p>
+                        <a href="#" id="show-register" class="link" data-i18n="login.signup">
+                            Sign up
+                        </a>
+                    </div>
+                </form>
+                
+                <div class="error-message hidden" id="auth-error"></div>
+            </div>
+        </div>
+        
+        <!-- Register Form -->
+        <div id="register-screen" class="auth-screen">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="logo">
+                        <img src="./assets/images/logos/logo.svg" alt="AffiliatePro" class="logo-img">
+                        <h1>AffiliatePro</h1>
+                    </div>
+                    <p class="auth-subtitle" data-i18n="register.subtitle">
+                        Create your account and start earning
+                    </p>
+                </div>
+                
+                <form id="register-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="register-name" data-i18n="register.name">Full Name</label>
+                        <input type="text" id="register-name" name="name" required 
+                               placeholder="Enter your full name" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-email" data-i18n="register.email">Email</label>
+                        <input type="email" id="register-email" name="email" required 
+                               placeholder="Enter your email" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-password" data-i18n="register.password">Password</label>
+                        <input type="password" id="register-password" name="password" required 
+                               placeholder="Create a strong password" class="form-input">
+                        <div class="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill"></div>
+                            </div>
+                            <span class="strength-text">Weak</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <span class="checkmark"></span>
+                            <span data-i18n="register.terms">
+                                I agree to the Terms of Service and Privacy Policy
+                            </span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full" data-i18n="register.create">
+                        Create Account
+                    </button>
+                    
+                    <div class="auth-footer">
+                        <p data-i18n="register.have_account">Already have an account?</p>
+                        <a href="#" id="show-login" class="link" data-i18n="register.signin">
+                            Sign in
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app-container" class="app-container hidden">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="./assets/images/logos/logo.svg" alt="AffiliatePro" class="logo-img">
+                    <span class="logo-text">AffiliatePro</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebar-toggle">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#dashboard" class="nav-link active" data-route="dashboard">
+                            <svg class="nav-icon" viewBox="0 0 24 24">
+                                <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                            </svg>
+                            <span data-i18n="nav.dashboard">Dashboard</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#products" class="nav-link" data-route="products">
+                            <svg class="nav-icon" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <span data-i18n="nav.products">Product Detector</span>
+                            <span class="nav-badge">AI</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#content" class="nav-link" data-route="content">
+                            <svg class="nav-icon" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                                <polyline points="14,2 14,8 20,8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10,9 9,9 8,9"/>
+                            </svg>
+                            <span data-i18n="nav.content">Content Generator</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#funnels" class="nav-link" data-route="funnels">
+                            <svg class="nav-icon" viewBox="0 0 24 24">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="7.5,4.21 12,6.81 16.5,4.21"/>
+                                <polyline points="7.5,19.79 7.5,14.6 3,12"/>
+                                <polyline points="21,12 16.5,14.6 16.5,19.79"/>
+                            </svg>
+                            <span data-i18n="nav.funnels">Funnel Architect</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#calculator" class="nav-link" data-route="calculator">
+                            <svg class="nav-icon" viewBox="0 0 24 24">
+                                <rect x="4" y="2" width="16" height="20" rx="2"/>
+                                <line x1="8" y1="6" x2="16" y2="6"/>
+                                <line x1="8" y1="10" x2="16" y2="10"/>
+                                <line x1="8" y1="14" x2="16" y2="14"/>
+                                <line x1="8" y1="18" x2="12" y2="18"/>
+                            </svg>
+                            <span data-i18n="nav.calculator">Profit Calculator</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="#avatar" class="nav-link" data-route="avatar">
+                            <svg class="nav-icon" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            <span data-i18n="nav.avatar">Avatar Generator</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title" data-i18n="nav.account">Account</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#profile" class="nav-link" data-route="profile">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                                <span data-i18n="nav.profile">Profile</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item" id="admin-nav" style="display: none;">
+                            <a href="#admin" class="nav-link" data-route="admin">
+                                <svg class="nav-icon" viewBox="0 0 24 24">
+                                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                                </svg>
+                                <span data-i18n="nav.admin">Admin Panel</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="upgrade-card" id="upgrade-card">
+                    <div class="upgrade-icon">⚡</div>
+                    <h4 data-i18n="upgrade.title">Upgrade to Pro</h4>
+                    <p data-i18n="upgrade.subtitle">Unlock unlimited features</p>
+                    <button class="btn btn-primary btn-sm" data-i18n="upgrade.button">
+                        Upgrade Now
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="page-title">
+                        <h1 id="page-title" data-i18n="dashboard.title">Dashboard</h1>
+                        <p id="page-subtitle" class="page-subtitle" data-i18n="dashboard.subtitle">
+                            Welcome back! Here's what's happening with your affiliate business.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="header-actions">
+                        <!-- Theme Toggle -->
+                        <button class="header-action theme-toggle" id="theme-toggle" 
+                                title="Toggle theme" data-i18n-title="header.theme_toggle">
+                            <svg class="icon icon-sun" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="5"/>
+                                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                            </svg>
+                            <svg class="icon icon-moon hidden" viewBox="0 0 24 24">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                            </svg>
+                        </button>
+                        
+                        <!-- Language Selector -->
+                        <div class="dropdown" id="language-dropdown">
+                            <button class="header-action dropdown-toggle" id="language-toggle">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                                </svg>
+                                <span id="current-language">EN</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item" data-lang="en">🇺🇸 English</a>
+                                <a href="#" class="dropdown-item" data-lang="es">🇪🇸 Español</a>
+                                <a href="#" class="dropdown-item" data-lang="pt">🇧🇷 Português</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Notifications -->
+                        <div class="dropdown" id="notifications-dropdown">
+                            <button class="header-action dropdown-toggle" id="notifications-toggle">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                                </svg>
+                                <span class="notification-badge" id="notification-count">3</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-wide">
+                                <div class="dropdown-header">
+                                    <h3 data-i18n="notifications.title">Notifications</h3>
+                                    <button class="btn-text" data-i18n="notifications.mark_read">Mark all as read</button>
+                                </div>
+                                <div class="notification-list" id="notification-list">
+                                    <!-- Notifications will be dynamically loaded -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- User Menu -->
+                        <div class="dropdown" id="user-dropdown">
+                            <button class="header-action user-avatar dropdown-toggle" id="user-toggle">
+                                <img src="./assets/images/icons/default-avatar.svg" alt="User" id="user-avatar">
+                                <span id="user-name">User</span>
+                                <svg class="icon icon-chevron" viewBox="0 0 24 24">
+                                    <polyline points="6,9 12,15 18,9"/>
+                                </svg>
+                            </button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-header">
+                                    <div class="user-info">
+                                        <div class="user-name" id="dropdown-user-name">User Name</div>
+                                        <div class="user-email" id="dropdown-user-email">user@example.com</div>
+                                        <div class="user-plan" id="dropdown-user-plan">Free Plan</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <a href="#profile" class="dropdown-item" data-route="profile">
+                                    <svg class="icon" viewBox="0 0 24 24">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                    <span data-i18n="user_menu.profile">Profile</span>
+                                </a>
+                                <a href="#settings" class="dropdown-item" data-route="settings">
+                                    <svg class="icon" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="3"/>
+                                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                                    </svg>
+                                    <span data-i18n="user_menu.settings">Settings</span>
+                                </a>
+                                <a href="#help" class="dropdown-item">
+                                    <svg class="icon" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                        <point cx="12" cy="17"/>
+                                    </svg>
+                                    <span data-i18n="user_menu.help">Help & Support</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item" id="logout-btn">
+                                    <svg class="icon" viewBox="0 0 24 24">
+                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                                        <polyline points="16,17 21,12 16,7"/>
+                                        <line x1="21" y1="12" x2="9" y2="12"/>
+                                    </svg>
+                                    <span data-i18n="user_menu.logout">Sign Out</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-content" id="page-content">
+                <!-- Content will be dynamically loaded here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <!-- Modals will be dynamically created here -->
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getAuth } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js';
+        
+        // Make Firebase available globally
+        window.firebase = { initializeApp, getAuth, getFirestore, getAnalytics };
+    </script>
+
+    <!-- Core JavaScript Files -->
+    <script type="module" src="./assets/js/core/firebase-config.js"></script>
+    <script type="module" src="./assets/js/utils/i18n.js"></script>
+    <script type="module" src="./assets/js/core/auth.js"></script>
+    <script type="module" src="./assets/js/core/router.js"></script>
+    <script type="module" src="./assets/js/components/ui-components.js"></script>
+    <script type="module" src="./assets/js/core/app.js"></script>
+</body>
+</html>
