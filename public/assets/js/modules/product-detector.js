@@ -6,6 +6,7 @@
 import { db, COLLECTIONS } from '../core/firebase-config.js';
 import authManager from '../core/auth.js';
 import uiComponents from '../components/ui-components.js';
+import config from '../config/environment.js';
 import {
     collection,
     addDoc,
@@ -34,8 +35,8 @@ let detectorState = {
 // AI Service integration
 class AIProductService {
     constructor() {
-        this.apiEndpoint = 'https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent';
-        this.apiKey = 'your-gemini-api-key'; // In production, this should be stored securely
+        this.apiEndpoint = config.ai.gemini.endpoint;
+        this.apiKey = config.ai.gemini.apiKey;
     }
 
     // Detect products using AI

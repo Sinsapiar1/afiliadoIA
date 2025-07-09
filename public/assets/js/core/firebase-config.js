@@ -3,16 +3,10 @@
  * AffiliatePro - AI-Powered Affiliate Marketing Platform
  */
 
+import config from '../config/environment.js';
+
 // Firebase configuration
-const firebaseConfig = {
-    apiKey: "your-api-key-here",
-    authDomain: "affiliate-pro-app.firebaseapp.com",
-    projectId: "affiliate-pro-app",
-    storageBucket: "affiliate-pro-app.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "1:123456789:web:abcdef123456",
-    measurementId: "G-XXXXXXXXXX"
-};
+const firebaseConfig = config.firebase;
 
 // Initialize Firebase
 let app, auth, db, analytics;
