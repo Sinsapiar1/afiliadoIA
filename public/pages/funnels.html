@@ -1,0 +1,563 @@
+<!-- Funnels Page -->
+<div class="funnels-page">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="header-content">
+            <h1 data-i18n="funnels.title">Funnel Architect</h1>
+            <p data-i18n="funnels.subtitle">Build high-converting sales funnels with our drag-and-drop builder and AI optimization.</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-primary" id="create-funnel-btn" data-i18n="funnels.create_funnel">Create Funnel</button>
+            <button class="btn btn-secondary" id="import-funnel-btn" data-i18n="funnels.import">Import</button>
+        </div>
+    </div>
+
+    <!-- Funnel Templates -->
+    <div class="funnel-templates-section">
+        <div class="section-header">
+            <h3 data-i18n="funnels.templates">Funnel Templates</h3>
+            <div class="template-filters">
+                <select id="template-category" class="form-select">
+                    <option value="" data-i18n="funnels.all_categories">All Categories</option>
+                    <option value="product-launch" data-i18n="funnels.product_launch">Product Launch</option>
+                    <option value="webinar" data-i18n="funnels.webinar">Webinar</option>
+                    <option value="lead-generation" data-i18n="funnels.lead_generation">Lead Generation</option>
+                    <option value="sales" data-i18n="funnels.sales">Sales</option>
+                    <option value="membership" data-i18n="funnels.membership">Membership</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="templates-grid" id="funnel-templates-grid">
+            <div class="template-card">
+                <div class="template-preview">
+                    <img src="./assets/images/funnels/product-launch.jpg" alt="Product Launch Funnel" 
+                         onerror="this.src='./assets/images/placeholder-funnel.jpg'">
+                    <div class="template-overlay">
+                        <button class="btn btn-primary btn-sm" data-i18n="funnels.use_template">Use Template</button>
+                        <button class="btn btn-secondary btn-sm" data-i18n="funnels.preview">Preview</button>
+                    </div>
+                </div>
+                <div class="template-info">
+                    <h4 data-i18n="funnels.product_launch_title">Product Launch Funnel</h4>
+                    <p data-i18n="funnels.product_launch_desc">Complete funnel for launching new products with pre-launch, launch, and post-launch phases</p>
+                    <div class="template-meta">
+                        <span class="template-pages">5 Pages</span>
+                        <span class="template-conversion">3.2% Avg</span>
+                        <span class="template-popular">Popular</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="template-preview">
+                    <img src="./assets/images/funnels/webinar.jpg" alt="Webinar Funnel" 
+                         onerror="this.src='./assets/images/placeholder-funnel.jpg'">
+                    <div class="template-overlay">
+                        <button class="btn btn-primary btn-sm" data-i18n="funnels.use_template">Use Template</button>
+                        <button class="btn btn-secondary btn-sm" data-i18n="funnels.preview">Preview</button>
+                    </div>
+                </div>
+                <div class="template-info">
+                    <h4 data-i18n="funnels.webinar_title">Webinar Funnel</h4>
+                    <p data-i18n="funnels.webinar_desc">High-converting webinar funnel with registration, reminder, and follow-up sequences</p>
+                    <div class="template-meta">
+                        <span class="template-pages">4 Pages</span>
+                        <span class="template-conversion">4.1% Avg</span>
+                        <span class="template-featured">Featured</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-card">
+                <div class="template-preview">
+                    <img src="./assets/images/funnels/lead-generation.jpg" alt="Lead Generation Funnel" 
+                         onerror="this.src='./assets/images/placeholder-funnel.jpg'">
+                    <div class="template-overlay">
+                        <button class="btn btn-primary btn-sm" data-i18n="funnels.use_template">Use Template</button>
+                        <button class="btn btn-secondary btn-sm" data-i18n="funnels.preview">Preview</button>
+                    </div>
+                </div>
+                <div class="template-info">
+                    <h4 data-i18n="funnels.lead_gen_title">Lead Generation Funnel</h4>
+                    <p data-i18n="funnels.lead_gen_desc">Simple and effective lead generation with free offer and follow-up sequence</p>
+                    <div class="template-meta">
+                        <span class="template-pages">3 Pages</span>
+                        <span class="template-conversion">2.8% Avg</span>
+                        <span class="template-new">New</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Funnels -->
+    <div class="my-funnels-section">
+        <div class="section-header">
+            <h3 data-i18n="funnels.my_funnels">My Funnels</h3>
+            <div class="funnel-controls">
+                <select id="funnel-status-filter" class="form-select">
+                    <option value="" data-i18n="funnels.all_status">All Status</option>
+                    <option value="draft" data-i18n="funnels.draft">Draft</option>
+                    <option value="active" data-i18n="funnels.active">Active</option>
+                    <option value="paused" data-i18n="funnels.paused">Paused</option>
+                    <option value="archived" data-i18n="funnels.archived">Archived</option>
+                </select>
+                <button class="btn btn-secondary" id="bulk-actions-btn" data-i18n="funnels.bulk_actions">Bulk Actions</button>
+            </div>
+        </div>
+
+        <div class="funnels-grid" id="my-funnels-grid">
+            <div class="funnel-card active">
+                <div class="funnel-header">
+                    <div class="funnel-status active">
+                        <span class="status-dot"></span>
+                        <span data-i18n="funnels.active">Active</span>
+                    </div>
+                    <div class="funnel-actions">
+                        <button class="btn-icon" title="Edit">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                        </button>
+                        <button class="btn-icon" title="Duplicate">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                        </button>
+                        <button class="btn-icon" title="More">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="1"/>
+                                <circle cx="19" cy="12" r="1"/>
+                                <circle cx="5" cy="12" r="1"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="funnel-preview">
+                    <img src="./assets/images/funnels/weight-loss-funnel.jpg" alt="Weight Loss Funnel" 
+                         onerror="this.src='./assets/images/placeholder-funnel.jpg'">
+                </div>
+
+                <div class="funnel-info">
+                    <h4>Weight Loss Journey Funnel</h4>
+                    <p>Complete funnel for weight loss product with upsells and downsells</p>
+                    
+                    <div class="funnel-stats">
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="funnels.visitors">Visitors</span>
+                            <span class="stat-value">1,234</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="funnels.conversions">Conversions</span>
+                            <span class="stat-value">3.2%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="funnels.revenue">Revenue</span>
+                            <span class="stat-value">$2,450</span>
+                        </div>
+                    </div>
+
+                    <div class="funnel-pages">
+                        <span class="pages-label" data-i18n="funnels.pages">Pages:</span>
+                        <div class="page-indicators">
+                            <span class="page-indicator active" title="Landing Page"></span>
+                            <span class="page-indicator active" title="Upsell"></span>
+                            <span class="page-indicator active" title="Downsell"></span>
+                            <span class="page-indicator" title="Thank You"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="funnel-actions-bottom">
+                    <button class="btn btn-primary btn-sm" data-i18n="funnels.edit">Edit</button>
+                    <button class="btn btn-secondary btn-sm" data-i18n="funnels.view_stats">View Stats</button>
+                </div>
+            </div>
+
+            <div class="funnel-card draft">
+                <div class="funnel-header">
+                    <div class="funnel-status draft">
+                        <span class="status-dot"></span>
+                        <span data-i18n="funnels.draft">Draft</span>
+                    </div>
+                    <div class="funnel-actions">
+                        <button class="btn-icon" title="Edit">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                        </button>
+                        <button class="btn-icon" title="Duplicate">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                        </button>
+                        <button class="btn-icon" title="More">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="1"/>
+                                <circle cx="19" cy="12" r="1"/>
+                                <circle cx="5" cy="12" r="1"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="funnel-preview">
+                    <img src="./assets/images/funnels/fitness-funnel.jpg" alt="Fitness Funnel" 
+                         onerror="this.src='./assets/images/placeholder-funnel.jpg'">
+                </div>
+
+                <div class="funnel-info">
+                    <h4>Fitness Transformation Funnel</h4>
+                    <p>Funnel for fitness coaching program with lead magnet and sales sequence</p>
+                    
+                    <div class="funnel-stats">
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="funnels.visitors">Visitors</span>
+                            <span class="stat-value">-</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="funnels.conversions">Conversions</span>
+                            <span class="stat-value">-</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="funnels.revenue">Revenue</span>
+                            <span class="stat-value">-</span>
+                        </div>
+                    </div>
+
+                    <div class="funnel-pages">
+                        <span class="pages-label" data-i18n="funnels.pages">Pages:</span>
+                        <div class="page-indicators">
+                            <span class="page-indicator" title="Landing Page"></span>
+                            <span class="page-indicator" title="Lead Magnet"></span>
+                            <span class="page-indicator" title="Sales Page"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="funnel-actions-bottom">
+                    <button class="btn btn-primary btn-sm" data-i18n="funnels.continue">Continue</button>
+                    <button class="btn btn-secondary btn-sm" data-i18n="funnels.preview">Preview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Funnel Analytics -->
+    <div class="funnel-analytics-section">
+        <div class="section-header">
+            <h3 data-i18n="funnels.analytics">Funnel Analytics</h3>
+            <div class="analytics-controls">
+                <select id="analytics-period" class="form-select">
+                    <option value="7" data-i18n="funnels.last_7_days">Last 7 days</option>
+                    <option value="30" data-i18n="funnels.last_30_days">Last 30 days</option>
+                    <option value="90" data-i18n="funnels.last_90_days">Last 90 days</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="analytics-grid">
+            <div class="analytics-card">
+                <div class="analytics-header">
+                    <h4 data-i18n="funnels.total_revenue">Total Revenue</h4>
+                    <div class="trend positive">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="18,15 12,9 6,15"/>
+                        </svg>
+                        <span>+12.5%</span>
+                    </div>
+                </div>
+                <div class="analytics-value">$8,450</div>
+                <div class="analytics-chart">
+                    <canvas id="revenue-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-header">
+                    <h4 data-i18n="funnels.conversion_rate">Conversion Rate</h4>
+                    <div class="trend positive">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="18,15 12,9 6,15"/>
+                        </svg>
+                        <span>+3.2%</span>
+                    </div>
+                </div>
+                <div class="analytics-value">3.8%</div>
+                <div class="analytics-chart">
+                    <canvas id="conversion-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-header">
+                    <h4 data-i18n="funnels.total_visitors">Total Visitors</h4>
+                    <div class="trend neutral">
+                        <svg viewBox="0 0 24 24">
+                            <line x1="18" y1="12" x2="6" y2="12"/>
+                        </svg>
+                        <span>0%</span>
+                    </div>
+                </div>
+                <div class="analytics-value">12,340</div>
+                <div class="analytics-chart">
+                    <canvas id="visitors-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-header">
+                    <h4 data-i18n="funnels.avg_order_value">Avg Order Value</h4>
+                    <div class="trend positive">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="18,15 12,9 6,15"/>
+                        </svg>
+                        <span>+8.7%</span>
+                    </div>
+                </div>
+                <div class="analytics-value">$67.50</div>
+                <div class="analytics-chart">
+                    <canvas id="aov-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Funnel Builder Modal -->
+    <div id="funnel-builder-modal" class="modal hidden">
+        <div class="modal-content modal-fullscreen">
+            <div class="modal-header">
+                <div class="builder-header">
+                    <h3 id="funnel-builder-title">Funnel Builder</h3>
+                    <div class="funnel-name">
+                        <input type="text" id="funnel-name-input" class="form-input" 
+                               placeholder="Enter funnel name" 
+                               data-i18n-placeholder="funnels.funnel_name_placeholder">
+                    </div>
+                </div>
+                <div class="builder-actions">
+                    <button class="btn btn-secondary" id="save-funnel-btn" data-i18n="funnels.save">Save</button>
+                    <button class="btn btn-primary" id="publish-funnel-btn" data-i18n="funnels.publish">Publish</button>
+                    <button class="modal-close" id="close-builder">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="funnel-builder-container">
+                    <div class="builder-sidebar">
+                        <div class="sidebar-section">
+                            <h4 data-i18n="funnels.elements">Elements</h4>
+                            <div class="elements-list">
+                                <div class="element-item" draggable="true" data-element="heading">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M6 4h12a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+                                        <path d="M6 12h12a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/>
+                                    </svg>
+                                    <span data-i18n="funnels.heading">Heading</span>
+                                </div>
+                                <div class="element-item" draggable="true" data-element="text">
+                                    <svg viewBox="0 0 24 24">
+                                        <line x1="8" y1="6" x2="21" y2="6"/>
+                                        <line x1="8" y1="12" x2="21" y2="12"/>
+                                        <line x1="8" y1="18" x2="21" y2="18"/>
+                                        <line x1="3" y1="6" x2="3.01" y2="6"/>
+                                        <line x1="3" y1="12" x2="3.01" y2="12"/>
+                                        <line x1="3" y1="18" x2="3.01" y2="18"/>
+                                    </svg>
+                                    <span data-i18n="funnels.text">Text</span>
+                                </div>
+                                <div class="element-item" draggable="true" data-element="button">
+                                    <svg viewBox="0 0 24 24">
+                                        <rect x="3" y="6" width="18" height="12" rx="2" ry="2"/>
+                                        <line x1="7" y1="12" x2="17" y2="12"/>
+                                    </svg>
+                                    <span data-i18n="funnels.button">Button</span>
+                                </div>
+                                <div class="element-item" draggable="true" data-element="image">
+                                    <svg viewBox="0 0 24 24">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                                        <polyline points="21,15 16,10 5,21"/>
+                                    </svg>
+                                    <span data-i18n="funnels.image">Image</span>
+                                </div>
+                                <div class="element-item" draggable="true" data-element="form">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                                        <polyline points="14,2 14,8 20,8"/>
+                                        <line x1="16" y1="13" x2="8" y2="13"/>
+                                        <line x1="16" y1="17" x2="8" y2="17"/>
+                                        <polyline points="10,9 9,9 8,9"/>
+                                    </svg>
+                                    <span data-i18n="funnels.form">Form</span>
+                                </div>
+                                <div class="element-item" draggable="true" data-element="video">
+                                    <svg viewBox="0 0 24 24">
+                                        <polygon points="23,7 16,12 23,17 23,7"/>
+                                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                                    </svg>
+                                    <span data-i18n="funnels.video">Video</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-section">
+                            <h4 data-i18n="funnels.pages">Pages</h4>
+                            <div class="pages-list" id="pages-list">
+                                <div class="page-item active" data-page="landing">
+                                    <span class="page-name" data-i18n="funnels.landing_page">Landing Page</span>
+                                    <div class="page-actions">
+                                        <button class="btn-icon" title="Settings">
+                                            <svg viewBox="0 0 24 24">
+                                                <circle cx="12" cy="12" r="3"/>
+                                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                                            </svg>
+                                        </button>
+                                        <button class="btn-icon" title="Delete">
+                                            <svg viewBox="0 0 24 24">
+                                                <polyline points="3,6 5,6 21,6"/>
+                                                <path d="M19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary btn-sm" id="add-page-btn" data-i18n="funnels.add_page">Add Page</button>
+                        </div>
+                    </div>
+
+                    <div class="builder-canvas">
+                        <div class="canvas-toolbar">
+                            <div class="toolbar-group">
+                                <button class="toolbar-btn" id="undo-btn" title="Undo">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M3 7v6h6"/>
+                                        <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/>
+                                    </svg>
+                                </button>
+                                <button class="toolbar-btn" id="redo-btn" title="Redo">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M21 7v6h-6"/>
+                                        <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3-2.7"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="toolbar-group">
+                                <button class="toolbar-btn" id="preview-btn" title="Preview">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                </button>
+                                <button class="toolbar-btn" id="mobile-preview-btn" title="Mobile Preview">
+                                    <svg viewBox="0 0 24 24">
+                                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                        <line x1="12" y1="18" x2="12.01" y2="18"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="canvas-area" id="funnel-canvas">
+                            <div class="drop-zone">
+                                <p data-i18n="funnels.drag_elements">Drag elements here to build your funnel</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="builder-panel">
+                        <div class="panel-header">
+                            <h4 data-i18n="funnels.properties">Properties</h4>
+                        </div>
+                        <div class="panel-content" id="properties-panel">
+                            <p class="no-selection" data-i18n="funnels.select_element">Select an element to edit its properties</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Funnel Settings Modal -->
+    <div id="funnel-settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-i18n="funnels.funnel_settings">Funnel Settings</h3>
+                <button class="modal-close" id="close-settings">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-tabs">
+                    <div class="tab-header">
+                        <button class="tab-btn active" data-tab="general" data-i18n="funnels.general">General</button>
+                        <button class="tab-btn" data-tab="tracking" data-i18n="funnels.tracking">Tracking</button>
+                        <button class="tab-btn" data-tab="integrations" data-i18n="funnels.integrations">Integrations</button>
+                    </div>
+
+                    <div class="tab-content active" id="general-tab">
+                        <div class="form-group">
+                            <label data-i18n="funnels.funnel_name">Funnel Name</label>
+                            <input type="text" id="settings-funnel-name" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="funnels.funnel_description">Description</label>
+                            <textarea id="settings-funnel-description" class="form-textarea"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="funnels.funnel_category">Category</label>
+                            <select id="settings-funnel-category" class="form-select">
+                                <option value="product-launch" data-i18n="funnels.product_launch">Product Launch</option>
+                                <option value="webinar" data-i18n="funnels.webinar">Webinar</option>
+                                <option value="lead-generation" data-i18n="funnels.lead_generation">Lead Generation</option>
+                                <option value="sales" data-i18n="funnels.sales">Sales</option>
+                                <option value="membership" data-i18n="funnels.membership">Membership</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="tracking-tab">
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="enable-tracking">
+                                <span class="checkmark"></span>
+                                <span data-i18n="funnels.enable_tracking">Enable Conversion Tracking</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="funnels.tracking_pixel">Tracking Pixel</label>
+                            <textarea id="tracking-pixel" class="form-textarea" 
+                                      placeholder="Paste your tracking pixel code here" 
+                                      data-i18n-placeholder="funnels.pixel_placeholder"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="integrations-tab">
+                        <div class="integration-list">
+                            <div class="integration-item">
+                                <div class="integration-info">
+                                    <h5>Email Service</h5>
+                                    <p>Connect your email service provider</p>
+                                </div>
+                                <button class="btn btn-secondary btn-sm" data-i18n="funnels.connect">Connect</button>
+                            </div>
+                            <div class="integration-item">
+                                <div class="integration-info">
+                                    <h5>Payment Gateway</h5>
+                                    <p>Connect your payment processor</p>
+                                </div>
+                                <button class="btn btn-secondary btn-sm" data-i18n="funnels.connect">Connect</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-settings" data-i18n="funnels.cancel">Cancel</button>
+                <button class="btn btn-primary" id="save-settings" data-i18n="funnels.save">Save Settings</button>
+            </div>
+        </div>
+    </div>
+</div>

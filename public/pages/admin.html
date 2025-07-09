@@ -1,0 +1,652 @@
+<!-- Admin Page -->
+<div class="admin-page">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="header-content">
+            <h1 data-i18n="admin.title">Admin Panel</h1>
+            <p data-i18n="admin.subtitle">Manage users, monitor system performance, and control platform settings.</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-primary" id="system-status-btn" data-i18n="admin.system_status">System Status</button>
+            <button class="btn btn-secondary" id="export-data-btn" data-i18n="admin.export_data">Export Data</button>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-dashboard">
+        <!-- Quick Stats -->
+        <div class="admin-stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h3 class="stat-value" id="total-users">1,234</h3>
+                    <p class="stat-label" data-i18n="admin.total_users">Total Users</p>
+                    <div class="stat-change positive">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="18,15 12,9 6,15"/>
+                        </svg>
+                        <span>+12%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h3 class="stat-value" id="total-revenue">$45,678</h3>
+                    <p class="stat-label" data-i18n="admin.total_revenue">Total Revenue</p>
+                    <div class="stat-change positive">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="18,15 12,9 6,15"/>
+                        </svg>
+                        <span>+8.5%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h3 class="stat-value" id="total-content">5,678</h3>
+                    <p class="stat-label" data-i18n="admin.total_content">Content Generated</p>
+                    <div class="stat-change positive">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="18,15 12,9 6,15"/>
+                        </svg>
+                        <span>+15%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h3 class="stat-value" id="total-funnels">234</h3>
+                    <p class="stat-label" data-i18n="admin.total_funnels">Active Funnels</p>
+                    <div class="stat-change neutral">
+                        <svg viewBox="0 0 24 24">
+                            <line x1="18" y1="12" x2="6" y2="12"/>
+                        </svg>
+                        <span>0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Tabs -->
+        <div class="admin-tabs">
+            <div class="tab-header">
+                <button class="tab-btn active" data-tab="overview" data-i18n="admin.overview">Overview</button>
+                <button class="tab-btn" data-tab="users" data-i18n="admin.users">Users</button>
+                <button class="tab-btn" data-tab="analytics" data-i18n="admin.analytics">Analytics</button>
+                <button class="tab-btn" data-tab="content" data-i18n="admin.content">Content</button>
+                <button class="tab-btn" data-tab="system" data-i18n="admin.system">System</button>
+                <button class="tab-btn" data-tab="settings" data-i18n="admin.settings">Settings</button>
+            </div>
+
+            <!-- Overview Tab -->
+            <div class="tab-content active" id="overview-tab">
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <h3 data-i18n="admin.recent_activity">Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <p data-i18n="admin.activity_new_user">New user registered: john.doe@example.com</p>
+                                    <span class="activity-time">2 minutes ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <p data-i18n="admin.activity_content_generated">Content generated: Blog post for Weight Loss Miracle</p>
+                                    <span class="activity-time">5 minutes ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <p data-i18n="admin.activity_payment">Payment received: $29.00 from user@example.com</p>
+                                    <span class="activity-time">10 minutes ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overview-card">
+                        <h3 data-i18n="admin.system_health">System Health</h3>
+                        <div class="health-metrics">
+                            <div class="health-item">
+                                <span class="health-label" data-i18n="admin.cpu_usage">CPU Usage</span>
+                                <div class="health-bar">
+                                    <div class="health-fill" style="width: 45%"></div>
+                                </div>
+                                <span class="health-value">45%</span>
+                            </div>
+                            <div class="health-item">
+                                <span class="health-label" data-i18n="admin.memory_usage">Memory Usage</span>
+                                <div class="health-bar">
+                                    <div class="health-fill" style="width: 62%"></div>
+                                </div>
+                                <span class="health-value">62%</span>
+                            </div>
+                            <div class="health-item">
+                                <span class="health-label" data-i18n="admin.disk_usage">Disk Usage</span>
+                                <div class="health-bar">
+                                    <div class="health-fill" style="width: 78%"></div>
+                                </div>
+                                <span class="health-value">78%</span>
+                            </div>
+                            <div class="health-item">
+                                <span class="health-label" data-i18n="admin.api_requests">API Requests/min</span>
+                                <div class="health-bar">
+                                    <div class="health-fill" style="width: 35%"></div>
+                                </div>
+                                <span class="health-value">1,234</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overview-card">
+                        <h3 data-i18n="admin.top_performers">Top Performers</h3>
+                        <div class="performers-list">
+                            <div class="performer-item">
+                                <div class="performer-rank">1</div>
+                                <div class="performer-info">
+                                    <h4>Sarah Johnson</h4>
+                                    <p data-i18n="admin.revenue_generated">Revenue: $12,450</p>
+                                </div>
+                                <div class="performer-stats">
+                                    <span class="stat">15 funnels</span>
+                                    <span class="stat">89% conversion</span>
+                                </div>
+                            </div>
+                            <div class="performer-item">
+                                <div class="performer-rank">2</div>
+                                <div class="performer-info">
+                                    <h4>Mike Chen</h4>
+                                    <p data-i18n="admin.revenue_generated">Revenue: $8,920</p>
+                                </div>
+                                <div class="performer-stats">
+                                    <span class="stat">12 funnels</span>
+                                    <span class="stat">76% conversion</span>
+                                </div>
+                            </div>
+                            <div class="performer-item">
+                                <div class="performer-rank">3</div>
+                                <div class="performer-info">
+                                    <h4>Emily Davis</h4>
+                                    <p data-i18n="admin.revenue_generated">Revenue: $6,780</p>
+                                </div>
+                                <div class="performer-stats">
+                                    <span class="stat">8 funnels</span>
+                                    <span class="stat">82% conversion</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Tab -->
+            <div class="tab-content" id="users-tab">
+                <div class="users-section">
+                    <div class="section-header">
+                        <h3 data-i18n="admin.user_management">User Management</h3>
+                        <div class="user-controls">
+                            <input type="text" id="user-search" class="form-input" 
+                                   placeholder="Search users..." 
+                                   data-i18n-placeholder="admin.search_users">
+                            <select id="user-filter" class="form-select">
+                                <option value="" data-i18n="admin.all_users">All Users</option>
+                                <option value="active" data-i18n="admin.active_users">Active</option>
+                                <option value="inactive" data-i18n="admin.inactive_users">Inactive</option>
+                                <option value="suspended" data-i18n="admin.suspended_users">Suspended</option>
+                            </select>
+                            <button class="btn btn-primary" id="add-user-btn" data-i18n="admin.add_user">Add User</button>
+                        </div>
+                    </div>
+
+                    <div class="users-table">
+                        <div class="table-header">
+                            <div class="table-cell">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="select-all-users">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="table-cell" data-i18n="admin.user">User</div>
+                            <div class="table-cell" data-i18n="admin.plan">Plan</div>
+                            <div class="table-cell" data-i18n="admin.status">Status</div>
+                            <div class="table-cell" data-i18n="admin.joined">Joined</div>
+                            <div class="table-cell" data-i18n="admin.last_login">Last Login</div>
+                            <div class="table-cell" data-i18n="admin.actions">Actions</div>
+                        </div>
+
+                        <div class="table-row">
+                            <div class="table-cell">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="user-checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="table-cell">
+                                <div class="user-info">
+                                    <img src="./assets/images/icons/default-avatar.svg" alt="User" class="user-avatar">
+                                    <div>
+                                        <h4>John Doe</h4>
+                                        <p>john.doe@example.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-cell">
+                                <span class="plan-badge pro">Pro</span>
+                            </div>
+                            <div class="table-cell">
+                                <span class="status-badge active" data-i18n="admin.active">Active</span>
+                            </div>
+                            <div class="table-cell">Jan 15, 2024</div>
+                            <div class="table-cell">2 hours ago</div>
+                            <div class="table-cell">
+                                <div class="action-buttons">
+                                    <button class="btn-icon" title="Edit">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-icon" title="Suspend">
+                                        <svg viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <line x1="12" y1="8" x2="12" y2="12"/>
+                                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-icon" title="Delete">
+                                        <svg viewBox="0 0 24 24">
+                                            <polyline points="3,6 5,6 21,6"/>
+                                            <path d="M19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-row">
+                            <div class="table-cell">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="user-checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="table-cell">
+                                <div class="user-info">
+                                    <img src="./assets/images/icons/default-avatar.svg" alt="User" class="user-avatar">
+                                    <div>
+                                        <h4>Sarah Johnson</h4>
+                                        <p>sarah.johnson@example.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-cell">
+                                <span class="plan-badge enterprise">Enterprise</span>
+                            </div>
+                            <div class="table-cell">
+                                <span class="status-badge active" data-i18n="admin.active">Active</span>
+                            </div>
+                            <div class="table-cell">Jan 10, 2024</div>
+                            <div class="table-cell">1 hour ago</div>
+                            <div class="table-cell">
+                                <div class="action-buttons">
+                                    <button class="btn-icon" title="Edit">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-icon" title="Suspend">
+                                        <svg viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <line x1="12" y1="8" x2="12" y2="12"/>
+                                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-icon" title="Delete">
+                                        <svg viewBox="0 0 24 24">
+                                            <polyline points="3,6 5,6 21,6"/>
+                                            <path d="M19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div class="tab-content" id="analytics-tab">
+                <div class="analytics-section">
+                    <div class="section-header">
+                        <h3 data-i18n="admin.platform_analytics">Platform Analytics</h3>
+                        <div class="analytics-controls">
+                            <select id="analytics-period" class="form-select">
+                                <option value="7" data-i18n="admin.last_7_days">Last 7 days</option>
+                                <option value="30" data-i18n="admin.last_30_days">Last 30 days</option>
+                                <option value="90" data-i18n="admin.last_90_days">Last 90 days</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h4 data-i18n="admin.user_growth">User Growth</h4>
+                            <div class="analytics-chart">
+                                <canvas id="user-growth-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card">
+                            <h4 data-i18n="admin.revenue_trends">Revenue Trends</h4>
+                            <div class="analytics-chart">
+                                <canvas id="revenue-trends-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card">
+                            <h4 data-i18n="admin.content_generation">Content Generation</h4>
+                            <div class="analytics-chart">
+                                <canvas id="content-generation-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card">
+                            <h4 data-i18n="admin.funnel_performance">Funnel Performance</h4>
+                            <div class="analytics-chart">
+                                <canvas id="funnel-performance-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Tab -->
+            <div class="tab-content" id="content-tab">
+                <div class="content-section">
+                    <div class="section-header">
+                        <h3 data-i18n="admin.content_moderation">Content Moderation</h3>
+                        <div class="content-controls">
+                            <select id="content-filter" class="form-select">
+                                <option value="" data-i18n="admin.all_content">All Content</option>
+                                <option value="pending" data-i18n="admin.pending_review">Pending Review</option>
+                                <option value="approved" data-i18n="admin.approved">Approved</option>
+                                <option value="rejected" data-i18n="admin.rejected">Rejected</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="content-table">
+                        <div class="table-header">
+                            <div class="table-cell" data-i18n="admin.content">Content</div>
+                            <div class="table-cell" data-i18n="admin.author">Author</div>
+                            <div class="table-cell" data-i18n="admin.type">Type</div>
+                            <div class="table-cell" data-i18n="admin.status">Status</div>
+                            <div class="table-cell" data-i18n="admin.created">Created</div>
+                            <div class="table-cell" data-i18n="admin.actions">Actions</div>
+                        </div>
+
+                        <div class="table-row">
+                            <div class="table-cell">
+                                <div class="content-info">
+                                    <h4>"Weight Loss Miracle" - Complete Review</h4>
+                                    <p>Blog post about weight loss product...</p>
+                                </div>
+                            </div>
+                            <div class="table-cell">John Doe</div>
+                            <div class="table-cell">
+                                <span class="content-type blog">Blog</span>
+                            </div>
+                            <div class="table-cell">
+                                <span class="status-badge pending" data-i18n="admin.pending">Pending</span>
+                            </div>
+                            <div class="table-cell">2 hours ago</div>
+                            <div class="table-cell">
+                                <div class="action-buttons">
+                                    <button class="btn btn-success btn-sm" data-i18n="admin.approve">Approve</button>
+                                    <button class="btn btn-danger btn-sm" data-i18n="admin.reject">Reject</button>
+                                    <button class="btn btn-secondary btn-sm" data-i18n="admin.view">View</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Tab -->
+            <div class="tab-content" id="system-tab">
+                <div class="system-section">
+                    <div class="section-header">
+                        <h3 data-i18n="admin.system_monitoring">System Monitoring</h3>
+                        <button class="btn btn-primary" id="refresh-system-btn" data-i18n="admin.refresh">Refresh</button>
+                    </div>
+
+                    <div class="system-grid">
+                        <div class="system-card">
+                            <h4 data-i18n="admin.server_status">Server Status</h4>
+                            <div class="status-indicators">
+                                <div class="status-item">
+                                    <span class="status-dot online"></span>
+                                    <span data-i18n="admin.web_server">Web Server</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-dot online"></span>
+                                    <span data-i18n="admin.database">Database</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-dot online"></span>
+                                    <span data-i18n="admin.cache">Cache</span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-dot warning"></span>
+                                    <span data-i18n="admin.email_service">Email Service</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="system-card">
+                            <h4 data-i18n="admin.api_status">API Status</h4>
+                            <div class="api-status">
+                                <div class="api-item">
+                                    <span class="api-name">OpenAI API</span>
+                                    <span class="api-status online" data-i18n="admin.online">Online</span>
+                                </div>
+                                <div class="api-item">
+                                    <span class="api-name">Google Gemini</span>
+                                    <span class="api-status online" data-i18n="admin.online">Online</span>
+                                </div>
+                                <div class="api-item">
+                                    <span class="api-name">ClickBank API</span>
+                                    <span class="api-status offline" data-i18n="admin.offline">Offline</span>
+                                </div>
+                                <div class="api-item">
+                                    <span class="api-name">Amazon API</span>
+                                    <span class="api-status online" data-i18n="admin.online">Online</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="system-card">
+                            <h4 data-i18n="admin.error_logs">Recent Error Logs</h4>
+                            <div class="error-logs">
+                                <div class="error-item">
+                                    <span class="error-time">2 min ago</span>
+                                    <span class="error-message">API rate limit exceeded for user 123</span>
+                                    <span class="error-level warning">Warning</span>
+                                </div>
+                                <div class="error-item">
+                                    <span class="error-time">5 min ago</span>
+                                    <span class="error-message">Database connection timeout</span>
+                                    <span class="error-level error">Error</span>
+                                </div>
+                                <div class="error-item">
+                                    <span class="error-time">10 min ago</span>
+                                    <span class="error-message">ClickBank API authentication failed</span>
+                                    <span class="error-level error">Error</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="tab-content" id="settings-tab">
+                <div class="settings-section">
+                    <h3 data-i18n="admin.platform_settings">Platform Settings</h3>
+                    
+                    <div class="settings-grid">
+                        <div class="setting-group">
+                            <h4 data-i18n="admin.general_settings">General Settings</h4>
+                            <div class="setting-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="maintenance-mode">
+                                    <span class="checkmark"></span>
+                                    <span data-i18n="admin.maintenance_mode">Maintenance Mode</span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="registration-enabled" checked>
+                                    <span class="checkmark"></span>
+                                    <span data-i18n="admin.registration_enabled">Enable User Registration</span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="email-verification" checked>
+                                    <span class="checkmark"></span>
+                                    <span data-i18n="admin.email_verification">Require Email Verification</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <h4 data-i18n="admin.ai_settings">AI Settings</h4>
+                            <div class="setting-item">
+                                <label data-i18n="admin.openai_api_key">OpenAI API Key</label>
+                                <input type="password" id="openai-api-key" class="form-input" value="sk-...">
+                            </div>
+                            <div class="setting-item">
+                                <label data-i18n="admin.gemini_api_key">Google Gemini API Key</label>
+                                <input type="password" id="gemini-api-key" class="form-input" value="AIza...">
+                            </div>
+                            <div class="setting-item">
+                                <label data-i18n="admin.ai_rate_limit">AI Rate Limit (requests/min)</label>
+                                <input type="number" id="ai-rate-limit" class="form-input" value="100">
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <h4 data-i18n="admin.email_settings">Email Settings</h4>
+                            <div class="setting-item">
+                                <label data-i18n="admin.smtp_host">SMTP Host</label>
+                                <input type="text" id="smtp-host" class="form-input" value="smtp.gmail.com">
+                            </div>
+                            <div class="setting-item">
+                                <label data-i18n="admin.smtp_port">SMTP Port</label>
+                                <input type="number" id="smtp-port" class="form-input" value="587">
+                            </div>
+                            <div class="setting-item">
+                                <label data-i18n="admin.smtp_username">SMTP Username</label>
+                                <input type="email" id="smtp-username" class="form-input" value="noreply@affiliatepro.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button class="btn btn-primary" id="save-settings-btn" data-i18n="admin.save_settings">Save Settings</button>
+                        <button class="btn btn-secondary" id="reset-settings-btn" data-i18n="admin.reset_settings">Reset to Default</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div id="add-user-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-i18n="admin.add_user">Add User</h3>
+                <button class="modal-close" id="close-add-user">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="add-user-form" class="settings-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-i18n="admin.first_name">First Name</label>
+                            <input type="text" id="new-user-first-name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="admin.last_name">Last Name</label>
+                            <input type="text" id="new-user-last-name" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="admin.email">Email</label>
+                        <input type="email" id="new-user-email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="admin.plan">Plan</label>
+                        <select id="new-user-plan" class="form-select">
+                            <option value="free" data-i18n="admin.free_plan">Free</option>
+                            <option value="pro" data-i18n="admin.pro_plan">Pro</option>
+                            <option value="enterprise" data-i18n="admin.enterprise_plan">Enterprise</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="admin.role">Role</label>
+                        <select id="new-user-role" class="form-select">
+                            <option value="user" data-i18n="admin.user_role">User</option>
+                            <option value="admin" data-i18n="admin.admin_role">Admin</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-add-user" data-i18n="admin.cancel">Cancel</button>
+                <button class="btn btn-primary" id="save-add-user" data-i18n="admin.add_user">Add User</button>
+            </div>
+        </div>
+    </div>
+</div>

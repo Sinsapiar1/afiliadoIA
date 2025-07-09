@@ -1,0 +1,496 @@
+<!-- Profile Page -->
+<div class="profile-page">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="header-content">
+            <h1 data-i18n="profile.title">Profile & Settings</h1>
+            <p data-i18n="profile.subtitle">Manage your account settings, preferences, and personal information.</p>
+        </div>
+    </div>
+
+    <!-- Profile Content -->
+    <div class="profile-container">
+        <!-- Profile Overview -->
+        <div class="profile-overview">
+            <div class="profile-header">
+                <div class="profile-avatar-section">
+                    <div class="profile-avatar">
+                        <img src="./assets/images/icons/default-avatar.svg" alt="Profile Avatar" id="profile-avatar-img">
+                        <div class="avatar-overlay">
+                            <button class="btn-icon" id="change-avatar-btn" title="Change Avatar">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                                    <circle cx="12" cy="13" r="4"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <input type="file" id="avatar-upload" accept="image/*" class="hidden">
+                </div>
+                <div class="profile-info">
+                    <h2 id="profile-name">John Doe</h2>
+                    <p id="profile-email">john.doe@example.com</p>
+                    <div class="profile-meta">
+                        <span class="profile-plan">Pro Plan</span>
+                        <span class="profile-member-since">Member since January 2024</span>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn btn-primary" id="edit-profile-btn" data-i18n="profile.edit_profile">Edit Profile</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Tabs -->
+        <div class="settings-tabs">
+            <div class="tab-header">
+                <button class="tab-btn active" data-tab="personal" data-i18n="profile.personal_info">Personal Info</button>
+                <button class="tab-btn" data-tab="account" data-i18n="profile.account">Account</button>
+                <button class="tab-btn" data-tab="preferences" data-i18n="profile.preferences">Preferences</button>
+                <button class="tab-btn" data-tab="security" data-i18n="profile.security">Security</button>
+                <button class="tab-btn" data-tab="billing" data-i18n="profile.billing">Billing</button>
+                <button class="tab-btn" data-tab="integrations" data-i18n="profile.integrations">Integrations</button>
+            </div>
+
+            <!-- Personal Information Tab -->
+            <div class="tab-content active" id="personal-tab">
+                <div class="settings-section">
+                    <h3 data-i18n="profile.personal_information">Personal Information</h3>
+                    <form id="personal-info-form" class="settings-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-i18n="profile.first_name">First Name</label>
+                                <input type="text" id="first-name" class="form-input" value="John">
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="profile.last_name">Last Name</label>
+                                <input type="text" id="last-name" class="form-input" value="Doe">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="profile.email">Email Address</label>
+                            <input type="email" id="email-address" class="form-input" value="john.doe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="profile.phone">Phone Number</label>
+                            <input type="tel" id="phone-number" class="form-input" value="+1 (555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="profile.company">Company</label>
+                            <input type="text" id="company" class="form-input" value="Digital Marketing Pro">
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="profile.website">Website</label>
+                            <input type="url" id="website" class="form-input" value="https://example.com">
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="profile.bio">Bio</label>
+                            <textarea id="bio" class="form-textarea" rows="4">Digital marketing specialist with 5+ years of experience in affiliate marketing and content creation.</textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" data-i18n="profile.save_changes">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Account Tab -->
+            <div class="tab-content" id="account-tab">
+                <div class="settings-section">
+                    <h3 data-i18n="profile.account_settings">Account Settings</h3>
+                    
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.account_type">Account Type</h4>
+                            <p data-i18n="profile.account_type_desc">Your current subscription plan and features</p>
+                        </div>
+                        <div class="setting-value">
+                            <span class="plan-badge pro">Pro Plan</span>
+                            <button class="btn btn-secondary btn-sm" data-i18n="profile.upgrade">Upgrade</button>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.account_status">Account Status</h4>
+                            <p data-i18n="profile.account_status_desc">Current status of your account</p>
+                        </div>
+                        <div class="setting-value">
+                            <span class="status-badge active" data-i18n="profile.active">Active</span>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.member_since">Member Since</h4>
+                            <p data-i18n="profile.member_since_desc">When you joined AffiliatePro</p>
+                        </div>
+                        <div class="setting-value">
+                            <span>January 15, 2024</span>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.last_login">Last Login</h4>
+                            <p data-i18n="profile.last_login_desc">Your most recent login activity</p>
+                        </div>
+                        <div class="setting-value">
+                            <span>2 hours ago</span>
+                        </div>
+                    </div>
+
+                    <div class="setting-item danger">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.delete_account">Delete Account</h4>
+                            <p data-i18n="profile.delete_account_desc">Permanently delete your account and all data</p>
+                        </div>
+                        <div class="setting-value">
+                            <button class="btn btn-danger btn-sm" id="delete-account-btn" data-i18n="profile.delete_account">Delete Account</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preferences Tab -->
+            <div class="tab-content" id="preferences-tab">
+                <div class="settings-section">
+                    <h3 data-i18n="profile.preferences">Preferences</h3>
+                    
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.language">Language</h4>
+                            <p data-i18n="profile.language_desc">Choose your preferred language</p>
+                        </div>
+                        <div class="setting-value">
+                            <select id="language-preference" class="form-select">
+                                <option value="en" data-i18n="profile.lang_english">English</option>
+                                <option value="es" data-i18n="profile.lang_spanish">Spanish</option>
+                                <option value="pt" data-i18n="profile.lang_portuguese">Portuguese</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.timezone">Timezone</h4>
+                            <p data-i18n="profile.timezone_desc">Your local timezone for accurate scheduling</p>
+                        </div>
+                        <div class="setting-value">
+                            <select id="timezone-preference" class="form-select">
+                                <option value="UTC-8">Pacific Time (UTC-8)</option>
+                                <option value="UTC-7">Mountain Time (UTC-7)</option>
+                                <option value="UTC-6">Central Time (UTC-6)</option>
+                                <option value="UTC-5">Eastern Time (UTC-5)</option>
+                                <option value="UTC+0">UTC</option>
+                                <option value="UTC+1">Central European Time (UTC+1)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.currency">Currency</h4>
+                            <p data-i18n="profile.currency_desc">Preferred currency for financial data</p>
+                        </div>
+                        <div class="setting-value">
+                            <select id="currency-preference" class="form-select">
+                                <option value="USD">USD ($)</option>
+                                <option value="EUR">EUR (€)</option>
+                                <option value="GBP">GBP (£)</option>
+                                <option value="CAD">CAD (C$)</option>
+                                <option value="AUD">AUD (A$)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.notifications">Email Notifications</h4>
+                            <p data-i18n="profile.notifications_desc">Manage your email notification preferences</p>
+                        </div>
+                        <div class="setting-value">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="email-notifications" checked>
+                                <span class="checkmark"></span>
+                                <span data-i18n="profile.enable_email">Enable email notifications</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.weekly_reports">Weekly Reports</h4>
+                            <p data-i18n="profile.weekly_reports_desc">Receive weekly performance summaries</p>
+                        </div>
+                        <div class="setting-value">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="weekly-reports" checked>
+                                <span class="checkmark"></span>
+                                <span data-i18n="profile.enable_reports">Enable weekly reports</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.ai_suggestions">AI Suggestions</h4>
+                            <p data-i18n="profile.ai_suggestions_desc">Receive AI-powered recommendations</p>
+                        </div>
+                        <div class="setting-value">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="ai-suggestions" checked>
+                                <span class="checkmark"></span>
+                                <span data-i18n="profile.enable_ai">Enable AI suggestions</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Tab -->
+            <div class="tab-content" id="security-tab">
+                <div class="settings-section">
+                    <h3 data-i18n="profile.security_settings">Security Settings</h3>
+                    
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.change_password">Change Password</h4>
+                            <p data-i18n="profile.change_password_desc">Update your account password</p>
+                        </div>
+                        <div class="setting-value">
+                            <button class="btn btn-secondary btn-sm" id="change-password-btn" data-i18n="profile.change_password">Change Password</button>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.two_factor">Two-Factor Authentication</h4>
+                            <p data-i18n="profile.two_factor_desc">Add an extra layer of security to your account</p>
+                        </div>
+                        <div class="setting-value">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="two-factor-auth">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.login_history">Login History</h4>
+                            <p data-i18n="profile.login_history_desc">Recent login activity and sessions</p>
+                        </div>
+                        <div class="setting-value">
+                            <button class="btn btn-secondary btn-sm" id="view-login-history-btn" data-i18n="profile.view_history">View History</button>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4 data-i18n="profile.active_sessions">Active Sessions</h4>
+                            <p data-i18n="profile.active_sessions_desc">Manage your current login sessions</p>
+                        </div>
+                        <div class="setting-value">
+                            <button class="btn btn-secondary btn-sm" id="manage-sessions-btn" data-i18n="profile.manage_sessions">Manage Sessions</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Billing Tab -->
+            <div class="tab-content" id="billing-tab">
+                <div class="settings-section">
+                    <h3 data-i18n="profile.billing_information">Billing Information</h3>
+                    
+                    <div class="billing-overview">
+                        <div class="billing-card">
+                            <div class="billing-header">
+                                <h4 data-i18n="profile.current_plan">Current Plan</h4>
+                                <span class="plan-badge pro">Pro Plan</span>
+                            </div>
+                            <div class="billing-details">
+                                <div class="billing-item">
+                                    <span class="label" data-i18n="profile.plan_price">Price:</span>
+                                    <span class="value">$29/month</span>
+                                </div>
+                                <div class="billing-item">
+                                    <span class="label" data-i18n="profile.next_billing">Next Billing:</span>
+                                    <span class="value">February 15, 2024</span>
+                                </div>
+                                <div class="billing-item">
+                                    <span class="label" data-i18n="profile.payment_method">Payment Method:</span>
+                                    <span class="value">Visa ending in 4242</span>
+                                </div>
+                            </div>
+                            <div class="billing-actions">
+                                <button class="btn btn-secondary btn-sm" data-i18n="profile.change_plan">Change Plan</button>
+                                <button class="btn btn-secondary btn-sm" data-i18n="profile.update_payment">Update Payment</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="billing-history">
+                        <h4 data-i18n="profile.billing_history">Billing History</h4>
+                        <div class="billing-table">
+                            <div class="billing-row header">
+                                <span data-i18n="profile.date">Date</span>
+                                <span data-i18n="profile.description">Description</span>
+                                <span data-i18n="profile.amount">Amount</span>
+                                <span data-i18n="profile.status">Status</span>
+                            </div>
+                            <div class="billing-row">
+                                <span>Jan 15, 2024</span>
+                                <span>Pro Plan - Monthly</span>
+                                <span>$29.00</span>
+                                <span class="status-paid" data-i18n="profile.paid">Paid</span>
+                            </div>
+                            <div class="billing-row">
+                                <span>Dec 15, 2023</span>
+                                <span>Pro Plan - Monthly</span>
+                                <span>$29.00</span>
+                                <span class="status-paid" data-i18n="profile.paid">Paid</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integrations Tab -->
+            <div class="tab-content" id="integrations-tab">
+                <div class="settings-section">
+                    <h3 data-i18n="profile.integrations">Integrations</h3>
+                    
+                    <div class="integrations-grid">
+                        <div class="integration-card">
+                            <div class="integration-header">
+                                <img src="./assets/images/integrations/clickbank.png" alt="ClickBank" class="integration-icon">
+                                <div class="integration-info">
+                                    <h4>ClickBank</h4>
+                                    <p data-i18n="profile.clickbank_desc">Connect your ClickBank account for product data</p>
+                                </div>
+                            </div>
+                            <div class="integration-status">
+                                <span class="status-badge connected" data-i18n="profile.connected">Connected</span>
+                                <button class="btn btn-secondary btn-sm" data-i18n="profile.disconnect">Disconnect</button>
+                            </div>
+                        </div>
+
+                        <div class="integration-card">
+                            <div class="integration-header">
+                                <img src="./assets/images/integrations/amazon.png" alt="Amazon" class="integration-icon">
+                                <div class="integration-info">
+                                    <h4>Amazon Associates</h4>
+                                    <p data-i18n="profile.amazon_desc">Connect your Amazon Associates account</p>
+                                </div>
+                            </div>
+                            <div class="integration-status">
+                                <span class="status-badge connected" data-i18n="profile.connected">Connected</span>
+                                <button class="btn btn-secondary btn-sm" data-i18n="profile.disconnect">Disconnect</button>
+                            </div>
+                        </div>
+
+                        <div class="integration-card">
+                            <div class="integration-header">
+                                <img src="./assets/images/integrations/mailchimp.png" alt="Mailchimp" class="integration-icon">
+                                <div class="integration-info">
+                                    <h4>Mailchimp</h4>
+                                    <p data-i18n="profile.mailchimp_desc">Sync your email marketing campaigns</p>
+                                </div>
+                            </div>
+                            <div class="integration-status">
+                                <span class="status-badge disconnected" data-i18n="profile.disconnected">Disconnected</span>
+                                <button class="btn btn-primary btn-sm" data-i18n="profile.connect">Connect</button>
+                            </div>
+                        </div>
+
+                        <div class="integration-card">
+                            <div class="integration-header">
+                                <img src="./assets/images/integrations/stripe.png" alt="Stripe" class="integration-icon">
+                                <div class="integration-info">
+                                    <h4>Stripe</h4>
+                                    <p data-i18n="profile.stripe_desc">Process payments and track revenue</p>
+                                </div>
+                            </div>
+                            <div class="integration-status">
+                                <span class="status-badge disconnected" data-i18n="profile.disconnected">Disconnected</span>
+                                <button class="btn btn-primary btn-sm" data-i18n="profile.connect">Connect</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="change-password-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-i18n="profile.change_password">Change Password</h3>
+                <button class="modal-close" id="close-password-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="change-password-form" class="settings-form">
+                    <div class="form-group">
+                        <label data-i18n="profile.current_password">Current Password</label>
+                        <input type="password" id="current-password" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="profile.new_password">New Password</label>
+                        <input type="password" id="new-password" class="form-input" required>
+                        <div class="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill"></div>
+                            </div>
+                            <span class="strength-text">Weak</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="profile.confirm_password">Confirm New Password</label>
+                        <input type="password" id="confirm-password" class="form-input" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-password-change" data-i18n="profile.cancel">Cancel</button>
+                <button class="btn btn-primary" id="save-password-change" data-i18n="profile.save_changes">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Account Modal -->
+    <div id="delete-account-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-i18n="profile.delete_account">Delete Account</h3>
+                <button class="modal-close" id="close-delete-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="delete-warning">
+                    <div class="warning-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="15" y1="9" x2="9" y2="15"/>
+                            <line x1="9" y1="9" x2="15" y2="15"/>
+                        </svg>
+                    </div>
+                    <h4 data-i18n="profile.delete_warning_title">Are you sure?</h4>
+                    <p data-i18n="profile.delete_warning_desc">This action cannot be undone. All your data, funnels, and content will be permanently deleted.</p>
+                </div>
+                <form id="delete-account-form" class="settings-form">
+                    <div class="form-group">
+                        <label data-i18n="profile.confirm_delete">Type "DELETE" to confirm</label>
+                        <input type="text" id="confirm-delete" class="form-input" 
+                               placeholder="DELETE" 
+                               data-i18n-placeholder="profile.delete_placeholder">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-delete" data-i18n="profile.cancel">Cancel</button>
+                <button class="btn btn-danger" id="confirm-delete-account" data-i18n="profile.delete_account">Delete Account</button>
+            </div>
+        </div>
+    </div>
+</div>

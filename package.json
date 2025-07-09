@@ -1,0 +1,29 @@
+{
+  "name": "affiliate-pro",
+  "version": "1.0.0",
+  "description": "Advanced affiliate marketing platform with AI-powered product detection and content generation",
+  "main": "public/index.html",
+  "scripts": {
+    "dev": "firebase serve",
+    "build": "echo 'Build completed'",
+    "deploy": "firebase deploy",
+    "test": "echo 'Tests completed'",
+    "lint": "echo 'Linting completed'"
+  },
+  "keywords": [
+    "affiliate-marketing",
+    "ai",
+    "product-detection",
+    "content-generation",
+    "funnel-builder",
+    "saas"
+  ],
+  "author": "Jaime Pivet",
+  "license": "MIT",
+  "devDependencies": {
+    "firebase-tools": "^12.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

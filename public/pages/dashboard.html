@@ -1,0 +1,464 @@
+<!-- Dashboard Page -->
+<div class="dashboard-page">
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+        <div class="welcome-content">
+            <h2 class="welcome-title" data-i18n="dashboard.welcome_title">Welcome back, <span id="user-first-name">User</span>!</h2>
+            <p class="welcome-subtitle" data-i18n="dashboard.welcome_subtitle">Here's what's happening with your affiliate business today.</p>
+        </div>
+        <div class="welcome-actions">
+            <button class="btn btn-primary" id="quick-start-btn" data-i18n="dashboard.quick_start">Quick Start</button>
+            <button class="btn btn-secondary" id="view-tutorial-btn" data-i18n="dashboard.view_tutorial">View Tutorial</button>
+        </div>
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <h3 class="stat-value" id="total-products">0</h3>
+                <p class="stat-label" data-i18n="dashboard.total_products">Total Products</p>
+                <div class="stat-change positive">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="18,15 12,9 6,15"/>
+                    </svg>
+                    <span id="products-change">+12%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <h3 class="stat-value" id="total-earnings">$0</h3>
+                <p class="stat-label" data-i18n="dashboard.total_earnings">Total Earnings</p>
+                <div class="stat-change positive">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="18,15 12,9 6,15"/>
+                    </svg>
+                    <span id="earnings-change">+8.5%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                    <polyline points="14,2 14,8 20,8"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <h3 class="stat-value" id="total-content">0</h3>
+                <p class="stat-label" data-i18n="dashboard.total_content">Content Pieces</p>
+                <div class="stat-change positive">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="18,15 12,9 6,15"/>
+                    </svg>
+                    <span id="content-change">+15%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <h3 class="stat-value" id="total-funnels">0</h3>
+                <p class="stat-label" data-i18n="dashboard.total_funnels">Active Funnels</p>
+                <div class="stat-change neutral">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="18" y1="12" x2="6" y2="12"/>
+                    </svg>
+                    <span id="funnels-change">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="dashboard-grid">
+        <!-- Recent Activity -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3 data-i18n="dashboard.recent_activity">Recent Activity</h3>
+                <button class="btn-text" id="view-all-activity" data-i18n="dashboard.view_all">View All</button>
+            </div>
+            <div class="activity-list" id="activity-list">
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <div class="activity-content">
+                        <p class="activity-text" data-i18n="dashboard.activity_product_added">New product "Weight Loss Miracle" added to your library</p>
+                        <span class="activity-time">2 hours ago</span>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                        </svg>
+                    </div>
+                    <div class="activity-content">
+                        <p class="activity-text" data-i18n="dashboard.activity_content_generated">Blog post generated for "Fitness Pro" product</p>
+                        <span class="activity-time">4 hours ago</span>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <div class="activity-content">
+                        <p class="activity-text" data-i18n="dashboard.activity_commission_earned">Commission earned: $45.20 from ClickBank</p>
+                        <span class="activity-time">6 hours ago</span>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                        </svg>
+                    </div>
+                    <div class="activity-content">
+                        <p class="activity-text" data-i18n="dashboard.activity_funnel_created">New sales funnel "Weight Loss Journey" created</p>
+                        <span class="activity-time">1 day ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3 data-i18n="dashboard.quick_actions">Quick Actions</h3>
+            </div>
+            <div class="quick-actions-grid">
+                <button class="quick-action-btn" data-action="detect-products">
+                    <div class="action-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <span data-i18n="dashboard.action_detect_products">Detect Products</span>
+                </button>
+
+                <button class="quick-action-btn" data-action="generate-content">
+                    <div class="action-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                        </svg>
+                    </div>
+                    <span data-i18n="dashboard.action_generate_content">Generate Content</span>
+                </button>
+
+                <button class="quick-action-btn" data-action="build-funnel">
+                    <div class="action-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                        </svg>
+                    </div>
+                    <span data-i18n="dashboard.action_build_funnel">Build Funnel</span>
+                </button>
+
+                <button class="quick-action-btn" data-action="calculate-profit">
+                    <div class="action-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="4" y="2" width="16" height="20" rx="2"/>
+                            <line x1="8" y1="6" x2="16" y2="6"/>
+                            <line x1="8" y1="10" x2="16" y2="10"/>
+                            <line x1="8" y1="14" x2="16" y2="14"/>
+                            <line x1="8" y1="18" x2="12" y2="18"/>
+                        </svg>
+                    </div>
+                    <span data-i18n="dashboard.action_calculate_profit">Calculate Profit</span>
+                </button>
+
+                <button class="quick-action-btn" data-action="create-avatar">
+                    <div class="action-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <span data-i18n="dashboard.action_create_avatar">Create Avatar</span>
+                </button>
+
+                <button class="quick-action-btn" data-action="validate-offer">
+                    <div class="action-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22,4 12,14.01 9,11.01"/>
+                        </svg>
+                    </div>
+                    <span data-i18n="dashboard.action_validate_offer">Validate Offer</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Performance Chart -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3 data-i18n="dashboard.performance_chart">Performance Overview</h3>
+                <div class="chart-controls">
+                    <select id="chart-period" class="form-select">
+                        <option value="7" data-i18n="dashboard.period_7_days">Last 7 days</option>
+                        <option value="30" data-i18n="dashboard.period_30_days">Last 30 days</option>
+                        <option value="90" data-i18n="dashboard.period_90_days">Last 90 days</option>
+                    </select>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="performance-chart"></canvas>
+            </div>
+        </div>
+
+        <!-- Top Products -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3 data-i18n="dashboard.top_products">Top Performing Products</h3>
+                <button class="btn-text" id="view-all-products" data-i18n="dashboard.view_all">View All</button>
+            </div>
+            <div class="products-list" id="top-products-list">
+                <div class="product-item">
+                    <div class="product-info">
+                        <h4 class="product-name">Weight Loss Miracle</h4>
+                        <p class="product-niche">Health & Fitness</p>
+                    </div>
+                    <div class="product-stats">
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="dashboard.commission">Commission</span>
+                            <span class="stat-value">$67.50</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="dashboard.conversion">Conversion</span>
+                            <span class="stat-value">3.2%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-info">
+                        <h4 class="product-name">Fitness Pro System</h4>
+                        <p class="product-niche">Health & Fitness</p>
+                    </div>
+                    <div class="product-stats">
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="dashboard.commission">Commission</span>
+                            <span class="stat-value">$45.20</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="dashboard.conversion">Conversion</span>
+                            <span class="stat-value">2.8%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-info">
+                        <h4 class="product-name">Digital Marketing Mastery</h4>
+                        <p class="product-niche">Business & Marketing</p>
+                    </div>
+                    <div class="product-stats">
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="dashboard.commission">Commission</span>
+                            <span class="stat-value">$89.99</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="dashboard.conversion">Conversion</span>
+                            <span class="stat-value">1.9%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Insights -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3 data-i18n="dashboard.ai_insights">AI Insights</h3>
+                <button class="btn-text" id="refresh-insights" data-i18n="dashboard.refresh">Refresh</button>
+            </div>
+            <div class="insights-list" id="ai-insights-list">
+                <div class="insight-item positive">
+                    <div class="insight-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <div class="insight-content">
+                        <h4 data-i18n="dashboard.insight_trending_niche">Trending Niche Alert</h4>
+                        <p data-i18n="dashboard.insight_health_fitness">Health & Fitness niche is showing 23% growth. Consider focusing on weight loss and wellness products.</p>
+                    </div>
+                </div>
+
+                <div class="insight-item neutral">
+                    <div class="insight-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                        </svg>
+                    </div>
+                    <div class="insight-content">
+                        <h4 data-i18n="dashboard.insight_content_optimization">Content Optimization</h4>
+                        <p data-i18n="dashboard.insight_video_content">Video content performs 40% better than text. Consider creating video reviews for your top products.</p>
+                    </div>
+                </div>
+
+                <div class="insight-item warning">
+                    <div class="insight-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                    </div>
+                    <div class="insight-content">
+                        <h4 data-i18n="dashboard.insight_competition">Competition Alert</h4>
+                        <p data-i18n="dashboard.insight_market_saturation">Your primary niche is becoming saturated. Consider exploring related sub-niches for better opportunities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Content -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3 data-i18n="dashboard.recent_content">Recent Content</h3>
+                <button class="btn-text" id="view-all-content" data-i18n="dashboard.view_all">View All</button>
+            </div>
+            <div class="content-list" id="recent-content-list">
+                <div class="content-item">
+                    <div class="content-type blog">Blog</div>
+                    <div class="content-info">
+                        <h4 class="content-title">"Weight Loss Miracle" - Complete Review</h4>
+                        <p class="content-meta">Published 2 days ago • 1,234 views</p>
+                    </div>
+                    <div class="content-actions">
+                        <button class="btn-icon" title="Edit">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                        </button>
+                        <button class="btn-icon" title="View">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="content-item">
+                    <div class="content-type social">Social</div>
+                    <div class="content-info">
+                        <h4 class="content-title">Instagram Post - Fitness Tips</h4>
+                        <p class="content-meta">Posted 3 days ago • 567 likes</p>
+                    </div>
+                    <div class="content-actions">
+                        <button class="btn-icon" title="Edit">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                        </button>
+                        <button class="btn-icon" title="View">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="content-item">
+                    <div class="content-type email">Email</div>
+                    <div class="content-info">
+                        <h4 class="content-title">Newsletter - Weekly Roundup</h4>
+                        <p class="content-meta">Sent 5 days ago • 89% open rate</p>
+                    </div>
+                    <div class="content-actions">
+                        <button class="btn-icon" title="Edit">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                        </button>
+                        <button class="btn-icon" title="View">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Onboarding Modal -->
+    <div id="onboarding-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-i18n="dashboard.onboarding_title">Welcome to AffiliatePro!</h3>
+                <button class="modal-close" id="close-onboarding">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="onboarding-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <h4 data-i18n="dashboard.step_1_title">Discover Winning Products</h4>
+                        <p data-i18n="dashboard.step_1_desc">Use our AI-powered product detector to find trending products in your niche.</p>
+                    </div>
+
+                    <div class="step" data-step="2">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                            </svg>
+                        </div>
+                        <h4 data-i18n="dashboard.step_2_title">Generate Viral Content</h4>
+                        <p data-i18n="dashboard.step_2_desc">Create engaging content that converts using our AI content generator.</p>
+                    </div>
+
+                    <div class="step" data-step="3">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            </svg>
+                        </div>
+                        <h4 data-i18n="dashboard.step_3_title">Build Sales Funnels</h4>
+                        <p data-i18n="dashboard.step_3_desc">Design high-converting sales funnels with our drag-and-drop builder.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="skip-onboarding" data-i18n="dashboard.skip_onboarding">Skip Tutorial</button>
+                <button class="btn btn-primary" id="next-step" data-i18n="dashboard.next_step">Next Step</button>
+            </div>
+        </div>
+    </div>
+</div>

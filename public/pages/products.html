@@ -1,0 +1,539 @@
+<!-- Products Page -->
+<div class="products-page">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="header-content">
+            <h1 data-i18n="products.title">Product Detector</h1>
+            <p data-i18n="products.subtitle">Discover winning products using AI-powered analysis across multiple affiliate networks.</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-primary" id="bulk-analyze-btn" data-i18n="products.bulk_analyze">Bulk Analyze</button>
+            <button class="btn btn-secondary" id="import-products-btn" data-i18n="products.import">Import Products</button>
+        </div>
+    </div>
+
+    <!-- Search and Filters -->
+    <div class="search-filters-section">
+        <div class="search-box">
+            <div class="search-input-wrapper">
+                <svg class="search-icon" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                </svg>
+                <input type="text" id="product-search" class="search-input" 
+                       placeholder="Search products, niches, or keywords..." data-i18n-placeholder="products.search_placeholder">
+            </div>
+            <button class="btn btn-primary" id="search-btn" data-i18n="products.search">Search</button>
+        </div>
+
+        <div class="filters-row">
+            <div class="filter-group">
+                <label data-i18n="products.filter_network">Network</label>
+                <select id="network-filter" class="form-select">
+                    <option value="" data-i18n="products.all_networks">All Networks</option>
+                    <option value="clickbank" data-i18n="products.clickbank">ClickBank</option>
+                    <option value="amazon" data-i18n="products.amazon">Amazon</option>
+                    <option value="cj" data-i18n="products.cj">Commission Junction</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label data-i18n="products.filter_niche">Niche</label>
+                <select id="niche-filter" class="form-select">
+                    <option value="" data-i18n="products.all_niches">All Niches</option>
+                    <option value="health" data-i18n="products.niche_health">Health & Fitness</option>
+                    <option value="business" data-i18n="products.niche_business">Business & Marketing</option>
+                    <option value="technology" data-i18n="products.niche_technology">Technology</option>
+                    <option value="lifestyle" data-i18n="products.niche_lifestyle">Lifestyle</option>
+                    <option value="education" data-i18n="products.niche_education">Education</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label data-i18n="products.filter_commission">Min Commission</label>
+                <select id="commission-filter" class="form-select">
+                    <option value="" data-i18n="products.any_commission">Any</option>
+                    <option value="10">$10+</option>
+                    <option value="25">$25+</option>
+                    <option value="50">$50+</option>
+                    <option value="100">$100+</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label data-i18n="products.filter_gravity">Min Gravity</label>
+                <select id="gravity-filter" class="form-select">
+                    <option value="" data-i18n="products.any_gravity">Any</option>
+                    <option value="10">10+</option>
+                    <option value="25">25+</option>
+                    <option value="50">50+</option>
+                    <option value="100">100+</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label data-i18n="products.filter_ai_score">AI Score</label>
+                <select id="ai-score-filter" class="form-select">
+                    <option value="" data-i18n="products.any_score">Any</option>
+                    <option value="7">7+ (Good)</option>
+                    <option value="8">8+ (Very Good)</option>
+                    <option value="9">9+ (Excellent)</option>
+                </select>
+            </div>
+
+            <button class="btn btn-secondary" id="clear-filters-btn" data-i18n="products.clear_filters">Clear Filters</button>
+        </div>
+    </div>
+
+    <!-- AI Analysis Panel -->
+    <div class="ai-analysis-panel" id="ai-analysis-panel">
+        <div class="panel-header">
+            <h3 data-i18n="products.ai_analysis">AI Analysis</h3>
+            <button class="btn-text" id="toggle-analysis-panel" data-i18n="products.toggle_panel">Hide</button>
+        </div>
+        <div class="analysis-content">
+            <div class="analysis-metrics">
+                <div class="metric">
+                    <span class="metric-label" data-i18n="products.trending_products">Trending Products</span>
+                    <span class="metric-value" id="trending-count">0</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label" data-i18n="products.high_potential">High Potential</span>
+                    <span class="metric-value" id="high-potential-count">0</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label" data-i18n="products.low_competition">Low Competition</span>
+                    <span class="metric-value" id="low-competition-count">0</span>
+                </div>
+            </div>
+            <div class="analysis-insights" id="analysis-insights">
+                <div class="insight-item">
+                    <div class="insight-icon positive">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <div class="insight-content">
+                        <h4 data-i18n="products.insight_trending">Trending Alert</h4>
+                        <p data-i18n="products.insight_health_trending">Health & Fitness products showing 23% growth trend</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-container">
+        <div class="products-header">
+            <div class="results-info">
+                <span id="results-count">0</span> <span data-i18n="products.products_found">products found</span>
+            </div>
+            <div class="view-controls">
+                <button class="view-btn active" data-view="grid" title="Grid View">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="7"/>
+                        <rect x="14" y="3" width="7" height="7"/>
+                        <rect x="14" y="14" width="7" height="7"/>
+                        <rect x="3" y="14" width="7" height="7"/>
+                    </svg>
+                </button>
+                <button class="view-btn" data-view="list" title="List View">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="8" y1="6" x2="21" y2="6"/>
+                        <line x1="8" y1="12" x2="21" y2="12"/>
+                        <line x1="8" y1="18" x2="21" y2="18"/>
+                        <line x1="3" y1="6" x2="3.01" y2="6"/>
+                        <line x1="3" y1="12" x2="3.01" y2="12"/>
+                        <line x1="3" y1="18" x2="3.01" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="sort-controls">
+                <select id="sort-by" class="form-select">
+                    <option value="ai_score" data-i18n="products.sort_ai_score">AI Score</option>
+                    <option value="commission" data-i18n="products.sort_commission">Commission</option>
+                    <option value="gravity" data-i18n="products.sort_gravity">Gravity</option>
+                    <option value="name" data-i18n="products.sort_name">Name</option>
+                    <option value="date" data-i18n="products.sort_date">Date Added</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="products-grid" id="products-grid">
+            <!-- Product Card Template -->
+            <div class="product-card" data-product-id="1">
+                <div class="product-header">
+                    <div class="product-badge trending">Trending</div>
+                    <div class="product-actions">
+                        <button class="btn-icon" title="Save to Library">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </button>
+                        <button class="btn-icon" title="Share">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="18" cy="5" r="3"/>
+                                <circle cx="6" cy="12" r="3"/>
+                                <circle cx="18" cy="19" r="3"/>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-image">
+                    <img src="./assets/images/products/weight-loss-miracle.jpg" alt="Weight Loss Miracle" 
+                         onerror="this.src='./assets/images/placeholder-product.jpg'">
+                    <div class="product-overlay">
+                        <button class="btn btn-primary btn-sm" data-i18n="products.view_details">View Details</button>
+                    </div>
+                </div>
+
+                <div class="product-content">
+                    <div class="product-title">
+                        <h3>Weight Loss Miracle</h3>
+                        <div class="ai-score">
+                            <span class="score">9.2</span>
+                            <span class="label" data-i18n="products.ai_score">AI Score</span>
+                        </div>
+                    </div>
+
+                    <div class="product-meta">
+                        <span class="niche health">Health & Fitness</span>
+                        <span class="network clickbank">ClickBank</span>
+                    </div>
+
+                    <div class="product-stats">
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="products.commission">Commission</span>
+                            <span class="stat-value">$67.50</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="products.gravity">Gravity</span>
+                            <span class="stat-value">45</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="products.conversion">Conversion</span>
+                            <span class="stat-value">3.2%</span>
+                        </div>
+                    </div>
+
+                    <div class="product-analysis">
+                        <div class="analysis-item positive">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22,4 12,14.01 9,11.01"/>
+                            </svg>
+                            <span data-i18n="products.analysis_trending">Trending</span>
+                        </div>
+                        <div class="analysis-item positive">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22,4 12,14.01 9,11.01"/>
+                            </svg>
+                            <span data-i18n="products.analysis_low_competition">Low Competition</span>
+                        </div>
+                        <div class="analysis-item neutral">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                            <span data-i18n="products.analysis_medium_gravity">Medium Gravity</span>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn btn-primary btn-sm" data-i18n="products.get_link">Get Link</button>
+                        <button class="btn btn-secondary btn-sm" data-i18n="products.analyze">Analyze</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Product Cards -->
+            <div class="product-card" data-product-id="2">
+                <div class="product-header">
+                    <div class="product-badge high-potential">High Potential</div>
+                    <div class="product-actions">
+                        <button class="btn-icon" title="Save to Library">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </button>
+                        <button class="btn-icon" title="Share">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="18" cy="5" r="3"/>
+                                <circle cx="6" cy="12" r="3"/>
+                                <circle cx="18" cy="19" r="3"/>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-image">
+                    <img src="./assets/images/products/fitness-pro-system.jpg" alt="Fitness Pro System" 
+                         onerror="this.src='./assets/images/placeholder-product.jpg'">
+                    <div class="product-overlay">
+                        <button class="btn btn-primary btn-sm" data-i18n="products.view_details">View Details</button>
+                    </div>
+                </div>
+
+                <div class="product-content">
+                    <div class="product-title">
+                        <h3>Fitness Pro System</h3>
+                        <div class="ai-score">
+                            <span class="score">8.7</span>
+                            <span class="label" data-i18n="products.ai_score">AI Score</span>
+                        </div>
+                    </div>
+
+                    <div class="product-meta">
+                        <span class="niche health">Health & Fitness</span>
+                        <span class="network amazon">Amazon</span>
+                    </div>
+
+                    <div class="product-stats">
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="products.commission">Commission</span>
+                            <span class="stat-value">$45.20</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="products.gravity">Gravity</span>
+                            <span class="stat-value">32</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label" data-i18n="products.conversion">Conversion</span>
+                            <span class="stat-value">2.8%</span>
+                        </div>
+                    </div>
+
+                    <div class="product-analysis">
+                        <div class="analysis-item positive">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22,4 12,14.01 9,11.01"/>
+                            </svg>
+                            <span data-i18n="products.analysis_high_commission">High Commission</span>
+                        </div>
+                        <div class="analysis-item positive">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22,4 12,14.01 9,11.01"/>
+                            </svg>
+                            <span data-i18n="products.analysis_stable">Stable Performance</span>
+                        </div>
+                        <div class="analysis-item warning">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                            <span data-i18n="products.analysis_competition">Some Competition</span>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn btn-primary btn-sm" data-i18n="products.get_link">Get Link</button>
+                        <button class="btn btn-secondary btn-sm" data-i18n="products.analyze">Analyze</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load More -->
+        <div class="load-more-section">
+            <button class="btn btn-secondary" id="load-more-btn" data-i18n="products.load_more">Load More Products</button>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div id="product-details-modal" class="modal hidden">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="modal-product-title">Product Details</h3>
+                <button class="modal-close" id="close-product-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-details-content">
+                    <div class="product-details-main">
+                        <div class="product-image-large">
+                            <img id="modal-product-image" src="" alt="">
+                        </div>
+                        <div class="product-info-detailed">
+                            <h2 id="modal-product-name">Product Name</h2>
+                            <div class="product-meta-detailed">
+                                <span class="niche" id="modal-product-niche">Niche</span>
+                                <span class="network" id="modal-product-network">Network</span>
+                                <span class="ai-score-large" id="modal-product-ai-score">AI Score: 9.2</span>
+                            </div>
+                            <p class="product-description" id="modal-product-description">
+                                Product description will be loaded here...
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="product-details-tabs">
+                        <div class="tabs-header">
+                            <button class="tab-btn active" data-tab="overview" data-i18n="products.tab_overview">Overview</button>
+                            <button class="tab-btn" data-tab="analysis" data-i18n="products.tab_analysis">AI Analysis</button>
+                            <button class="tab-btn" data-tab="competition" data-i18n="products.tab_competition">Competition</button>
+                            <button class="tab-btn" data-tab="content" data-i18n="products.tab_content">Content Ideas</button>
+                        </div>
+
+                        <div class="tab-content active" id="overview-tab">
+                            <div class="overview-stats">
+                                <div class="stat-card">
+                                    <h4 data-i18n="products.commission_rate">Commission Rate</h4>
+                                    <span class="stat-value" id="modal-commission-rate">75%</span>
+                                </div>
+                                <div class="stat-card">
+                                    <h4 data-i18n="products.epc">EPC</h4>
+                                    <span class="stat-value" id="modal-epc">$2.15</span>
+                                </div>
+                                <div class="stat-card">
+                                    <h4 data-i18n="products.refund_rate">Refund Rate</h4>
+                                    <span class="stat-value" id="modal-refund-rate">3.2%</span>
+                                </div>
+                                <div class="stat-card">
+                                    <h4 data-i18n="products.promotion_methods">Promotion Methods</h4>
+                                    <span class="stat-value" id="modal-promotion-methods">All</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="analysis-tab">
+                            <div class="ai-analysis-detailed">
+                                <div class="analysis-chart">
+                                    <canvas id="analysis-chart"></canvas>
+                                </div>
+                                <div class="analysis-recommendations">
+                                    <h4 data-i18n="products.recommendations">AI Recommendations</h4>
+                                    <ul id="analysis-recommendations-list">
+                                        <li data-i18n="products.recommendation_1">Focus on video content for better conversion</li>
+                                        <li data-i18n="products.recommendation_2">Target audience: 25-45 age group</li>
+                                        <li data-i18n="products.recommendation_3">Use social proof in marketing materials</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="competition-tab">
+                            <div class="competition-analysis">
+                                <div class="competition-metrics">
+                                    <h4 data-i18n="products.competition_level">Competition Level</h4>
+                                    <div class="competition-bar">
+                                        <div class="bar-fill" style="width: 35%"></div>
+                                        <span class="bar-label">Low</span>
+                                    </div>
+                                </div>
+                                <div class="competitor-products">
+                                    <h4 data-i18n="products.similar_products">Similar Products</h4>
+                                    <div class="competitor-list" id="competitor-list">
+                                        <!-- Competitor products will be loaded here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="content-tab">
+                            <div class="content-ideas">
+                                <h4 data-i18n="products.content_ideas">Content Ideas</h4>
+                                <div class="ideas-grid">
+                                    <div class="idea-card">
+                                        <h5 data-i18n="products.idea_review">Product Review</h5>
+                                        <p data-i18n="products.idea_review_desc">Create an honest, detailed review highlighting benefits and results</p>
+                                        <button class="btn btn-sm btn-primary" data-i18n="products.generate_content">Generate</button>
+                                    </div>
+                                    <div class="idea-card">
+                                        <h5 data-i18n="products.idea_comparison">Comparison Post</h5>
+                                        <p data-i18n="products.idea_comparison_desc">Compare with similar products in the market</p>
+                                        <button class="btn btn-sm btn-primary" data-i18n="products.generate_content">Generate</button>
+                                    </div>
+                                    <div class="idea-card">
+                                        <h5 data-i18n="products.idea_testimonial">Testimonial</h5>
+                                        <p data-i18n="products.idea_testimonial_desc">Create compelling customer testimonials</p>
+                                        <button class="btn btn-sm btn-primary" data-i18n="products.generate_content">Generate</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="save-to-library-btn" data-i18n="products.save_to_library">Save to Library</button>
+                <button class="btn btn-primary" id="get-affiliate-link-btn" data-i18n="products.get_affiliate_link">Get Affiliate Link</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bulk Analysis Modal -->
+    <div id="bulk-analysis-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-i18n="products.bulk_analysis_title">Bulk Product Analysis</h3>
+                <button class="modal-close" id="close-bulk-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="bulk-analysis-content">
+                    <div class="upload-section">
+                        <h4 data-i18n="products.upload_products">Upload Products</h4>
+                        <p data-i18n="products.upload_description">Upload a CSV file with product URLs or paste product links below</p>
+                        
+                        <div class="upload-methods">
+                            <div class="upload-method">
+                                <input type="file" id="csv-upload" accept=".csv" class="file-input">
+                                <label for="csv-upload" class="file-label">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                                        <polyline points="14,2 14,8 20,8"/>
+                                    </svg>
+                                    <span data-i18n="products.upload_csv">Upload CSV</span>
+                                </label>
+                            </div>
+                            
+                            <div class="upload-method">
+                                <textarea id="product-links" class="form-textarea" 
+                                          placeholder="Paste product URLs here (one per line)" 
+                                          data-i18n-placeholder="products.paste_urls"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-options">
+                        <h4 data-i18n="products.analysis_options">Analysis Options</h4>
+                        <div class="options-grid">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="analyze-trends" checked>
+                                <span class="checkmark"></span>
+                                <span data-i18n="products.analyze_trends">Analyze Trends</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="analyze-competition" checked>
+                                <span class="checkmark"></span>
+                                <span data-i18n="products.analyze_competition">Analyze Competition</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="generate-insights" checked>
+                                <span class="checkmark"></span>
+                                <span data-i18n="products.generate_insights">Generate Insights</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="score-products" checked>
+                                <span class="checkmark"></span>
+                                <span data-i18n="products.score_products">Score Products</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-bulk-analysis" data-i18n="products.cancel">Cancel</button>
+                <button class="btn btn-primary" id="start-bulk-analysis" data-i18n="products.start_analysis">Start Analysis</button>
+            </div>
+        </div>
+    </div>
+</div>
