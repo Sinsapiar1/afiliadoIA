@@ -15,16 +15,15 @@ export const config = {
     isDevelopment,
     isProduction,
     
-    // Firebase Configuration - Demo/Development values
-    // NOTE: Replace these with your actual Firebase project configuration
+    // Firebase Configuration - Real Production values
     firebase: {
-        apiKey: "AIzaSyDemo_Replace_With_Your_API_Key",
-        authDomain: "affiliate-pro-demo.firebaseapp.com",
-        projectId: "affiliate-pro-demo",
-        storageBucket: "affiliate-pro-demo.appspot.com",
-        messagingSenderId: "123456789012",
-        appId: "1:123456789012:web:abcdef1234567890",
-        measurementId: "G-DEMO123456"
+        apiKey: "AIzaSyAqVGZGdwrvvZoC1trRr8h8TNXrwyugHww",
+        authDomain: "marketingafiliados-c6eec.firebaseapp.com",
+        projectId: "marketingafiliados-c6eec",
+        storageBucket: "marketingafiliados-c6eec.firebasestorage.app",
+        messagingSenderId: "208888972841",
+        appId: "1:208888972841:web:e68d63fffebc2fe578fe38",
+        measurementId: "G-YVQLB05W65"
     },
     
     // AI Services Configuration
@@ -110,9 +109,9 @@ export const config = {
     
     // Demo Mode Configuration
     demo: {
-        enabled: true,
-        mockData: true,
-        simulateAI: true,
+        enabled: isDevelopment, // Enable demo mode only in development
+        mockData: isDevelopment,
+        simulateAI: isDevelopment,
         bypassAuth: false
     }
 };

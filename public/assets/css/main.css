@@ -1157,3 +1157,124 @@ body.demo-mode .auth-container {
     font-size: 16px;
     margin: 0;
 }
+
+/* API Configuration Modal */
+.api-config-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.api-config-intro {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.api-config-benefits {
+    margin-top: 15px;
+}
+
+.api-config-benefits h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.api-config-benefits ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.api-config-benefits li {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.api-service-config {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.api-service-config h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.api-service-config p {
+    margin: 0 0 15px 0;
+    color: #666;
+}
+
+.form-help {
+    margin-top: 8px;
+}
+
+.form-help a {
+    color: #6366f1;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.form-help a:hover {
+    text-decoration: underline;
+}
+
+.api-config-status {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
+}
+
+.api-config-status:not(:empty) {
+    display: block;
+}
+
+.success-message {
+    color: #059669;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.error-message {
+    color: #dc2626;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.warning-message {
+    color: #d97706;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.loading-message {
+    color: #6366f1;
+    background: #f0f9ff;
+    border: 1px solid #bfdbfe;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Navigation indicators for API status */
+.nav-link.api-configured::after {
+    content: '✓';
+    color: #059669;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.nav-link:not(.api-configured)[data-route="products"]::after,
+.nav-link:not(.api-configured)[data-route="content"]::after {
+    content: '⚙️';
+    opacity: 0.6;
+    margin-left: 5px;
+}

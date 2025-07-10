@@ -392,6 +392,12 @@
                                     </svg>
                                     <span data-i18n="user_menu.settings">Settings</span>
                                 </a>
+                                <a href="#" class="dropdown-item" onclick="aiConfig.showApiConfigModal()">
+                                    <svg class="icon" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    <span>🔑 Configure AI API Keys</span>
+                                </a>
                                 <a href="#help" class="dropdown-item">
                                     <svg class="icon" viewBox="0 0 24 24">
                                         <circle cx="12" cy="12" r="10"/>
@@ -450,6 +456,7 @@
     <script type="module" src="./assets/js/core/auth.js"></script>
     <script type="module" src="./assets/js/core/router.js"></script>
     <script type="module" src="./assets/js/components/ui-components.js"></script>
+    <script type="module" src="./assets/js/modules/ai-config.js"></script>
     <script type="module" src="./assets/js/core/app.js"></script>
 </body>
 </html>
