@@ -4,7 +4,9 @@
  */
 
 // Environment detection
-const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const isDevelopment = window.location.hostname === 'localhost' || 
+                     window.location.hostname === '127.0.0.1' ||
+                     window.location.port === '8080';
 const isProduction = !isDevelopment;
 
 // Configuration object
@@ -13,44 +15,29 @@ export const config = {
     isDevelopment,
     isProduction,
     
-    // Firebase Configuration
+    // Firebase Configuration - Demo/Development values
+    // NOTE: Replace these with your actual Firebase project configuration
     firebase: {
-        apiKey: isDevelopment 
-            ? "AIzaSyBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" 
-            : "YOUR_PRODUCTION_API_KEY",
-        authDomain: isDevelopment 
-            ? "affiliate-pro-demo.firebaseapp.com" 
-            : "your-production-domain.firebaseapp.com",
-        projectId: isDevelopment 
-            ? "affiliate-pro-demo" 
-            : "your-production-project-id",
-        storageBucket: isDevelopment 
-            ? "affiliate-pro-demo.appspot.com" 
-            : "your-production-bucket.appspot.com",
-        messagingSenderId: isDevelopment 
-            ? "123456789012" 
-            : "YOUR_PRODUCTION_SENDER_ID",
-        appId: isDevelopment 
-            ? "1:123456789012:web:abcdef1234567890" 
-            : "YOUR_PRODUCTION_APP_ID",
-        measurementId: isDevelopment 
-            ? "G-XXXXXXXXXX" 
-            : "YOUR_PRODUCTION_MEASUREMENT_ID"
+        apiKey: "AIzaSyDemo_Replace_With_Your_API_Key",
+        authDomain: "affiliate-pro-demo.firebaseapp.com",
+        projectId: "affiliate-pro-demo",
+        storageBucket: "affiliate-pro-demo.appspot.com",
+        messagingSenderId: "123456789012",
+        appId: "1:123456789012:web:abcdef1234567890",
+        measurementId: "G-DEMO123456"
     },
     
     // AI Services Configuration
     ai: {
         gemini: {
-            apiKey: isDevelopment 
-                ? "AIzaSyBXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" 
-                : "YOUR_GEMINI_API_KEY",
-            endpoint: "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent"
+            apiKey: "AIzaSyDemo_Replace_With_Your_Gemini_API_Key",
+            endpoint: "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent",
+            model: "gemini-pro"
         },
         openai: {
-            apiKey: isDevelopment 
-                ? "sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" 
-                : "YOUR_OPENAI_API_KEY",
-            endpoint: "https://api.openai.com/v1/chat/completions"
+            apiKey: "sk-demo_Replace_With_Your_OpenAI_API_Key",
+            endpoint: "https://api.openai.com/v1/chat/completions",
+            model: "gpt-3.5-turbo"
         }
     },
     
@@ -58,8 +45,8 @@ export const config = {
     payments: {
         stripe: {
             publishableKey: isDevelopment 
-                ? "pk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" 
-                : "pk_live_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                ? "pk_test_demo_replace_with_your_stripe_test_key" 
+                : "pk_live_replace_with_your_stripe_live_key"
         }
     },
     
@@ -71,7 +58,8 @@ export const config = {
         profitCalculator: true,
         adminPanel: true,
         teamManagement: false,
-        apiAccess: false
+        apiAccess: false,
+        offlineMode: true
     },
     
     // Limits Configuration
@@ -101,15 +89,15 @@ export const config = {
     
     // Admin Configuration
     admin: {
-        emails: ['jaime.pivet@gmail.com'],
+        emails: ['jaime.pivet@gmail.com', 'admin@affiliatepro.com'],
         superAdminEmails: ['jaime.pivet@gmail.com']
     },
     
     // Analytics Configuration
     analytics: {
         enabled: true,
-        googleAnalyticsId: isDevelopment ? 'G-XXXXXXXXXX' : 'YOUR_GA_ID',
-        mixpanelToken: isDevelopment ? 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' : 'YOUR_MIXPANEL_TOKEN'
+        googleAnalyticsId: isDevelopment ? 'G-DEMO123456' : 'G-PROD123456',
+        mixpanelToken: isDevelopment ? 'demo_token_12345' : 'prod_token_12345'
     },
     
     // Performance Configuration
@@ -118,6 +106,14 @@ export const config = {
         maxRetries: 3,
         retryDelay: 1000,
         requestTimeout: 30000
+    },
+    
+    // Demo Mode Configuration
+    demo: {
+        enabled: true,
+        mockData: true,
+        simulateAI: true,
+        bypassAuth: false
     }
 };
 
@@ -140,6 +136,26 @@ export const isAdmin = (email) => {
 
 export const isSuperAdmin = (email) => {
     return config.admin.superAdminEmails.includes(email);
+};
+
+export const isDemoMode = () => {
+    return config.demo.enabled;
+};
+
+export const isValidApiKey = (key) => {
+    return key && !key.includes('demo') && !key.includes('Replace');
+};
+
+export const getErrorMessage = (error) => {
+    const messages = {
+        'INVALID_API_KEY': 'API key is missing or invalid. Please check your configuration.',
+        'NETWORK_ERROR': 'Network connection error. Please check your internet connection.',
+        'RATE_LIMIT': 'Rate limit exceeded. Please try again later.',
+        'UNAUTHORIZED': 'Unauthorized access. Please check your credentials.',
+        'NOT_FOUND': 'Resource not found.',
+        'SERVER_ERROR': 'Server error. Please try again later.'
+    };
+    return messages[error] || 'An unexpected error occurred.';
 };
 
 export default config;

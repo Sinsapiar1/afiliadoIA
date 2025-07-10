@@ -7,6 +7,7 @@ import './firebase-config.js';
 import authManager from './auth.js';
 import router from './router.js';
 import uiComponents from '../components/ui-components.js';
+import { isDemoMode } from '../config/environment.js';
 
 // Application state management
 class Application {
@@ -68,6 +69,11 @@ class Application {
             // Hide loading screen
             setTimeout(() => {
                 this.hideLoadingScreen();
+                
+                // Show demo banner if in demo mode
+                if (isDemoMode()) {
+                    this.showDemoBanner();
+                }
             }, 1000);
             
             console.log('✅ AffiliatePro initialized successfully');
@@ -808,6 +814,30 @@ class Application {
     // Update application state
     setState(updates) {
         this.appState = { ...this.appState, ...updates };
+    }
+
+    // Show demo banner
+    showDemoBanner() {
+        const demoBanner = document.getElementById('demo-banner');
+        if (demoBanner) {
+            demoBanner.classList.remove('hidden');
+            setTimeout(() => {
+                demoBanner.classList.add('show');
+                document.body.classList.add('demo-mode');
+            }, 100);
+        }
+    }
+
+    // Hide demo banner
+    hideDemoBanner() {
+        const demoBanner = document.getElementById('demo-banner');
+        if (demoBanner) {
+            demoBanner.classList.remove('show');
+            document.body.classList.remove('demo-mode');
+            setTimeout(() => {
+                demoBanner.classList.add('hidden');
+            }, 300);
+        }
     }
 }
 

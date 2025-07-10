@@ -3,24 +3,36 @@
  * AffiliatePro - AI-Powered Affiliate Marketing Platform
  */
 
-import { auth, db, USER_ROLES, USER_PLANS, ADMIN_EMAILS, COLLECTIONS, FirebaseUtils } from './firebase-config.js';
-import { 
-    signInWithEmailAndPassword, 
-    createUserWithEmailAndPassword,
-    signOut,
-    sendPasswordResetEmail,
-    updateProfile,
-    onAuthStateChanged,
-    sendEmailVerification
-} from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
-import {
-    doc,
-    setDoc,
-    getDoc,
-    updateDoc,
-    serverTimestamp,
-    increment
-} from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import { isDemoMode } from '../config/environment.js';
+import demoAuth from './demo-auth.js';
+
+// Import Firebase modules only if not in demo mode
+let auth, db, USER_ROLES, USER_PLANS, ADMIN_EMAILS, COLLECTIONS, FirebaseUtils;
+let signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, sendPasswordResetEmail, updateProfile, onAuthStateChanged, sendEmailVerification;
+let doc, setDoc, getDoc, updateDoc, serverTimestamp, increment;
+
+if (!isDemoMode()) {
+    // Load Firebase modules
+    try {
+        const firebaseConfig = await import('./firebase-config.js');
+        ({ auth, db, USER_ROLES, USER_PLANS, ADMIN_EMAILS, COLLECTIONS, FirebaseUtils } = firebaseConfig);
+        
+        const authModule = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js');
+        ({ signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, sendPasswordResetEmail, updateProfile, onAuthStateChanged, sendEmailVerification } = authModule);
+        
+        const firestoreModule = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+        ({ doc, setDoc, getDoc, updateDoc, serverTimestamp, increment } = firestoreModule);
+    } catch (error) {
+        console.warn('⚠️ Firebase modules not available, using demo mode');
+    }
+} else {
+    // Use demo constants
+    USER_ROLES = { USER: 'user', ADMIN: 'admin', SUPER_ADMIN: 'super_admin' };
+    USER_PLANS = { FREE: 'free', PRO: 'pro', AGENCY: 'agency', ENTERPRISE: 'enterprise' };
+    ADMIN_EMAILS = ['admin@affiliatepro.com', 'jaime.pivet@gmail.com'];
+    COLLECTIONS = { USERS: 'users', PRODUCTS: 'products', CONTENT: 'content', FUNNELS: 'funnels', AVATARS: 'avatars', ANALYTICS: 'analytics', ADMIN: 'admin', SETTINGS: 'settings' };
+    FirebaseUtils = { handleError: (error) => error.message || 'An error occurred' };
+}
 
 // Authentication State Management
 class AuthManager {
@@ -36,36 +48,55 @@ class AuthManager {
 
     // Initialize authentication state listener
     initAuthStateListener() {
-        onAuthStateChanged(auth, async (user) => {
-            this.currentUser = user;
-            
-            if (user) {
-                try {
-                    // Load user profile data
-                    await this.loadUserProfile(user.uid);
-                    
-                    // Update last login
-                    await this.updateLastLogin(user.uid);
-                    
-                    // Check if user is admin
-                    const isAdmin = this.isAdmin(user.email);
-                    if (isAdmin && this.userProfile?.role !== USER_ROLES.ADMIN) {
-                        await this.updateUserRole(user.uid, USER_ROLES.ADMIN);
-                    }
-                    
-                    console.log('✅ User authenticated:', user.email);
-                } catch (error) {
-                    console.error('❌ Error loading user profile:', error);
+        if (isDemoMode()) {
+            // Use demo auth listener
+            demoAuth.onAuthStateChange((user, profile) => {
+                this.currentUser = user;
+                this.userProfile = profile;
+                
+                if (user) {
+                    console.log('✅ Demo user authenticated:', user.email);
+                } else {
+                    console.log('ℹ️ Demo user signed out');
                 }
-            } else {
-                this.userProfile = null;
-                console.log('ℹ️ User signed out');
-            }
 
-            // Notify all listeners
-            this.notifyAuthListeners(user, this.userProfile);
-            this.isInitialized = true;
-        });
+                // Notify all listeners
+                this.notifyAuthListeners(user, profile);
+                this.isInitialized = true;
+            });
+        } else {
+            // Use Firebase auth listener
+            onAuthStateChanged(auth, async (user) => {
+                this.currentUser = user;
+                
+                if (user) {
+                    try {
+                        // Load user profile data
+                        await this.loadUserProfile(user.uid);
+                        
+                        // Update last login
+                        await this.updateLastLogin(user.uid);
+                        
+                        // Check if user is admin
+                        const isAdmin = this.isAdmin(user.email);
+                        if (isAdmin && this.userProfile?.role !== USER_ROLES.ADMIN) {
+                            await this.updateUserRole(user.uid, USER_ROLES.ADMIN);
+                        }
+                        
+                        console.log('✅ User authenticated:', user.email);
+                    } catch (error) {
+                        console.error('❌ Error loading user profile:', error);
+                    }
+                } else {
+                    this.userProfile = null;
+                    console.log('ℹ️ User signed out');
+                }
+
+                // Notify all listeners
+                this.notifyAuthListeners(user, this.userProfile);
+                this.isInitialized = true;
+            });
+        }
     }
 
     // Add authentication state listener
@@ -99,6 +130,11 @@ class AuthManager {
 
     // Sign in with email and password
     async signIn(email, password, rememberMe = false) {
+        if (isDemoMode()) {
+            // Use demo auth
+            return await demoAuth.signIn(email, password, rememberMe);
+        }
+        
         try {
             const result = await signInWithEmailAndPassword(auth, email, password);
             const user = result.user;
@@ -128,6 +164,11 @@ class AuthManager {
 
     // Create new user account
     async signUp(email, password, fullName) {
+        if (isDemoMode()) {
+            // Use demo auth
+            return await demoAuth.signUp(email, password, fullName);
+        }
+        
         try {
             // Validate input
             if (!email || !password || !fullName) {
@@ -178,6 +219,11 @@ class AuthManager {
 
     // Sign out user
     async signOut() {
+        if (isDemoMode()) {
+            // Use demo auth
+            return await demoAuth.signOut();
+        }
+        
         try {
             await signOut(auth);
             this.currentUser = null;
@@ -199,6 +245,11 @@ class AuthManager {
 
     // Send password reset email
     async resetPassword(email) {
+        if (isDemoMode()) {
+            // Use demo auth
+            return await demoAuth.sendPasswordResetEmail(email);
+        }
+        
         try {
             await sendPasswordResetEmail(auth, email);
             return {
